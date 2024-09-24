@@ -67,6 +67,23 @@ h1, .page-title h1, h2, .section-heading h2, h3, .probootstrap-card .probootstra
     user-select: none;
 }
 
+h1, .page-title h1, h2, .section-heading2 h2, h3, .probootstrap-card .probootstrap-card-text .probootstrap-card-headin5g, .service .heading5, .service.left-icon h3, h4, .probootstrap-pane5l .panel5 .panel-title {
+  margin: 1.414em 0 0.5em;
+  line-height: 1.2;
+  font-weight: 300;
+  color: #1dc28d;
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+
+
 h1, .page-title h1 {
   margin-top: 0;
   font-size: 1.602em;
@@ -132,7 +149,7 @@ p, ul, ol, figure {
   margin-bottom: 1.3em;
   font-family: "Noto Sans Arabic", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 100;
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
@@ -457,11 +474,27 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
   visibility: hidden;
   -webkit-transition: .3s all ease-out;
   transition: .3s all ease-out;
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    -ms-user-select: none; 
+    user-select: none;
 }
 
 .probootstrap-mobile-menu-active.show .mobile-menu-overlay {
   opacity: 1;
   visibility: visible;
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    -ms-user-select: none; 
+    user-select: none;
 }
 
 .probootstrap-header-social {
@@ -682,6 +715,30 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
     user-select: none;
 
 }
+
+.btn.btn-primary2 {
+  border: 2px solid #ea0000;
+  background: #d31414d4;
+  color: #ffffff;
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;                                           /*border of get started button */
+  font-variation-settings:
+    "wdth" 100;
+    -ms-user-select: none; 
+    user-select: none;
+     font-family: "Noto Sans Arabic", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    -ms-user-select: none; 
+    user-select: none;
+
+}
+
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
   background: ffffff;
@@ -1256,8 +1313,8 @@ figure:hover figcaption, figure:focus figcaption {
 }
 
 .img-border {
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  padding: 10px;
+  border: 4px solid rgba(205, 205, 205, 0.591);
+  padding: 0px;
 }
 
 .probootstrap-panel .panel {
@@ -1274,7 +1331,7 @@ figure:hover figcaption, figure:focus figcaption {
 
 .probootstrap-panel .panel .panel-heading {
   background: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid rgba(159, 10, 10, 0.1);
 }
 
 .probootstrap-panel .panel .panel-heading a {
@@ -1339,18 +1396,7 @@ figure:hover figcaption, figure:focus figcaption {
   margin-bottom: 0;
 }
 
-.probootstrap-video {
-  position: relative;
-}
 
-.probootstrap-video .probootstrap-video-play {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-}
 
 .probootstrap-video .probootstrap-video-play i {
   position: absolute;
@@ -1371,6 +1417,8 @@ figure:hover figcaption, figure:focus figcaption {
 .probootstrap-video .probootstrap-video-play:active, .probootstrap-video .probootstrap-video-play:focus {
   outline: none;
 }
+
+
 
 .slides-text {
   z-index: 99;
@@ -1440,6 +1488,44 @@ figure:hover figcaption, figure:focus figcaption {
 .probootstrap-card .probootstrap-card-text {
   padding: 20px;
 }
+
+@keyframes zoom-fade {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  50% {
+      transform: scale(1.01);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.probootstrap-card-text {
+  animation: zoom-fade 5s ease-in-out infinite; /* Slower animation */
+}
+
+
+
+@keyframes smooth-move {
+  0% {
+      transform: translate(0, 0);
+  }
+  50% {
+      transform: translate(3.7px, 3.7px); /* Move slightly down and right */
+  }
+  100% {
+      transform: translate(0, 0); /* Return to original position */
+  }
+}
+
+.probootstrap-card {
+  animation: smooth-move 3s ease-in-out infinite; /* Smooth and continuous */
+}
+
 
 .probootstrap-card .probootstrap-card-text .probootstrap-card-heading {
   margin-top: 0;
