@@ -76,6 +76,7 @@
         // Referrer check
         window.onload = function() {
             const allowedReferrer = "https://itshalib.com/paid.html"; // Change this to the allowed page URL
+            console.log("Referrer:", document.referrer); // Debugging
 
             // Check if the referrer matches
             if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
@@ -109,42 +110,4 @@
                 const { width, height } = firstPage.getSize();
                 
                 const nameWidth = helveticaBoldFont.widthOfTextAtSize(studentName, 30);
-                const nameX = (width - nameWidth) / 2;
-
-                firstPage.drawText(studentName, {
-                    x: nameX,
-                    y: height - 290,
-                    size: 30,
-                    color: PDFLib.rgb(1, 1, 1),
-                    font: helveticaBoldFont,
-                });
-
-                const dateWidth = helveticaBoldFont.widthOfTextAtSize(formattedDate, 20);
-                const dateX = (width - dateWidth) / 2;
-
-                firstPage.drawText(formattedDate, {
-                    x: dateX,
-                    y: height - 335,
-                    size: 20,
-                    color: PDFLib.rgb(1, 1, 1),
-                    font: helveticaBoldFont,
-                });
-
-                const pdfBytes = await pdfDoc.save();
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                const url = URL.createObjectURL(blob);
-
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `${studentName}_Certificate.pdf`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            } catch (error) {
-                console.error('Error generating certificate:', error);
-                alert(`Error: ${error.message}`);
-            }
-        });
-    </script>
-</body>
-</html>
+                const nameX = (width - nameWidth) / 
