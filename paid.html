@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
     <link rel="icon" href="img/halib1.PNG">
     <title>حليب</title>
@@ -12,46 +12,62 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/custom.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@600&display=swap" rel="stylesheet">
+
     <style>
         body {
-            background-color: black;
-            color: rgb(0, 0, 0);
+            background: linear-gradient(to bottom right, #4a4a4a, #000000); /* Gradient background */
+            color: white; /* Text color */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            
         }
         #loginContainer {
-            text-align: center;
+            text-align: center; color: #000000;
+            
+            padding: 20px; /* Added padding for better spacing */
+            border-radius: 10px; /* Rounded corners */
+            background-color: rgba(126, 126, 126, 0.668); /* Semi-transparent background */
         }
+
+        h2 {
+            color: rgb(255, 255, 255); /* Change heading color to black */
+        }
+        
         input[type="password"] {
+            text-align: center;
             padding: 10px;
             margin-top: 10px;
             width: 200px;
-            border: none;
+            border: 2px solid rgb(0, 0, 0); /* Solid border */
             border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            color: rgb(0, 0, 0); /* Text color in input */
         }
         button {
-            padding: 10px 15px;
+            padding: 12px 17px;
             margin-top: 10px;
             border: none;
             border-radius: 5px;
-            background-color: white;
-            color: rgb(0, 0, 0);
+            background-color: #111111; /* Button color */
+            color: white;
             cursor: pointer;
+            float: right; /* Align button to the right */
         }
         button:hover {
-            background-color: #ccc;
+            background-color: #d35400; /* Darker shade on hover */
         }
         #notification {
             margin-top: 10px;
             font-weight: bold;
         }
         .error {
-            color: red;
+            color: rgb(203, 19, 19);
+            font-weight: bolder;
+            font-family: 'Open Sans', sans-serif;
         }
         .success {
             color: green;
@@ -61,6 +77,7 @@
             margin-top: 20px;
             text-align: left;
             width: 80%; /* Adjust width as needed */
+            
         }
     </style>
 </head>
@@ -73,373 +90,10 @@
     </div>
     
     <div id="content">
-        <!-- Your protected content goes here -->
-
-  <!-- START: header -->
-  
-  <div class="probootstrap-loader"></div>
-
-  <header role="banner" class="probootstrap-header">
-    <div class="container">
-        <a href="index.html" class="probootstrap-logo"><span>حليب</span></a>
-        
-        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>القائمة</i></a>
-        <div class="mobile-menu-overlay"></div>
-
-        <nav role="navigation" class="probootstrap-nav hidden-xs">
-          <ul class="probootstrap-main-nav">
-            <li class="active"><a href="index.html">الرئيسية</a></li>
-            <li><a href="projects.html">الافكار</a></li>
-            <li><a href="services.html">الخدمات</a></li>
-            <li><a href="about.html">عن الفريق</a></li>
-            <li><a href="mailto:hackmetree@gmail.com">تواصل والاعلان</a></li>
-          </ul>
-          <ul class="probootstrap-right-nav hidden-xs">
-            <li><a href="https://www.youtube.com/@itshalib1" target="_blank"><i class="icon-youtube"></i></a></li>
-            <li><a href="https://instagram.com/itshalib" target="_blank"><i class="icon-instagram2"></i></a></li>
-            <li><a href="https://t.me/itshalib" target="_blank"><i class="icon-telegram"></i></a></li>
-            <li><a href="https://x.com/itshalib" target="_blank"><i class="icon-twitter"></i></a></li>
-          </ul>
-          <div class="extra-text visible-xs"> 
-            <a href="#" class="probootstrap-burger-menu"><i>القائمة</i></a>
-            <h5>تواصل الاعمال </h5>
-            <p>hackmetree@gmail.com</p>
-            <h5>حساباتنا</h5>
-            <ul class="social-buttons">
-              <li><a href="https://www.youtube.com/@itshalib1" target="_blank"><i class="icon-youtube"></i></a></li>
-              <li><a href="https://t.me/itshalib" target="_blank"><i class="icon-telegram"></i></a></li>
-              <li><a href="https://instagram.com/itshalib" target="_blank"><i class="icon-instagram2"></i></a></li>
-              <li><a href="https://x.com/itshalib" target="_blank"><i class="icon-twitter"></i></a></li>
-            </ul>
-          </div>
-        </nav>
-    </div>
-  </header>
-  <!-- END: header -->
-  <section class="probootstrap-slider flexslider">
-    <ul class="slides">
-      <li style="background-image: url(img/awfdaf.PNG);">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <div class="slides-text probootstrap-animate">
-                <h2>تعلم مع حليب</h2>
-                <p><a href="https://www.youtube.com/@itshalib1" target="_blank" class="btn btn-primary">ابدا الان</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li style="background-image: url(img/slider_2.jpg);">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <div class="slides-text probootstrap-animate">
-                <h2>الامن السيبراني</h2>
-                <p><a href="https://www.youtube.com/@itshalib1" target="_blank" class="btn btn-primary">ابدا الان</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li style="background-image: url(img/wp6308469.jpg);">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <div class="slides-text probootstrap-animate">
-                <h2>! مجانا</h2>
-                <p><a href="https://www.youtube.com/@itshalib1" target="_blank" class="btn btn-primary">ابدا الان</a></p>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </section>
-  <!-- END: slider  -->
-
-  
-  <!-- END section -->
-  <section class="probootstrap-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 section-heading probootstrap-animate">
-          <h2>اخر الاخبار</h2>
-          <p>2024/9/6</p>
-          <img src="img/newsv2.PNG" alt="Course Image" class="img-responsive img-border3">
-        </div>
-      </div>
-    </div>
-  </section>
-
-    
-  <div class="probootstrap-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 probootstrap-animate" data-animate-effect="fadeInRight">
-
-          <div class="panel-group probootstrap-panel" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingOne">
-                <h3 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-
-                    ⚠ تنبيه هام ⚠
-                  </a>
-                </h3>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                  <p>كل ما يتم تعلمه من خلال ما يقدمه فريق حليب على جميع المنصات</p>
-                  <p>قد صمم ونشر لاغراض تعليميه فقط</p>
-                  <p>جميع ما يتم تعلمه قد يكون مخالف قانونيا في حال طبق في المكان الغير مناسب</p>
-                <p>في حال تم تطبيق جميع ما يتم تعلمه على افراد وغيره قد يلحق بك بمخالفات قانونية</p>
-                <p>وفريق حليب غير مسؤول عن اي تصرف غير قانوني ابدا</p>
-                <p>.. استغل العلم فالخير </p>
-
-                  <!--             <figure>
-                  <div class="probootstrap-video">
-                    <a href="www.youtube.com/@halib1" class="popup-vimeo probootstrap-video-play"><i class="icon-play3"></i></a>
-                    <img src="img/wifi hacking.PNG" alt="Free HTML5 Bootstrap Template by uicookies.com" class="img-responsive img-border">
-                  </div>
-                  <figcaption>في هذا الفيديو ستتعلم اختراق شبكات الواي فاي بالطريقة الاساسية </figcaption>
-                </figure>
-              ---->  
-                </div>
-              </div>
-          <!-- END panel-group -->
-        </div>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8084214794053139"
-     crossorigin="anonymous"></script>
-<!-- pic -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:320px;height:300px"
-     data-ad-client="ca-pub-8084214794053139"
-     data-ad-slot="8012125145"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-        
-
-<section class="probootstrap-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 section-heading probootstrap-animate">
-        <h2>الافكار المتاحة حتى الان</h2>
-      </div>
-    </div>
-    <div class="row">
-
-      <div class="col-md-4 col-sm-6 probootstrap-animate">
-        <div class="probootstrap-card">
-          <div class="probootstrap-card-media">
-            <a href="https://youtube.com/@itshalib1"><img src="img/wifi hacking.PNG" class="img-responsive img-border" alt=""></a>
-          </div>
-          <div class="probootstrap-card-text">
-            <h2 class="probootstrap-card-heading mb0">اختبار اختراق الواي فاي</h2>
-            <p class="category">wifi hacking</p>
-            <p>اختراق شبكات الواي فاي من اساسيات اختبار الشبكات لمعرفة نقاط ضعف الشبكة واختبار قوة كلمات المرور</p>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 probootstrap-animate">
-        <div class="probootstrap-card">
-          <div class="probootstrap-card-media">
-            <a href="https://youtube.com/@itshalib1l"><img src="img/bad v1.png" class="img-responsive img-border" alt=""></a>
-          </div>
-          <div class="probootstrap-card-text">
-            <h2 class="probootstrap-card-heading mb0">يو اس بي سيئه</h2>
-            <p class="category">Hardware</p>
-            <p>ستتعلم كيفية استخدام قطع الهارد وير في اختبار الاختراقات</p>
-
-          </div>
-        </div>
-      </div>
-      <div class="clearfix visible-sm-block"></div>
-      <div class="col-md-4 col-sm-6 probootstrap-animate">
-        <div class="probootstrap-card">
-          <div class="probootstrap-card-media">
-            <a href="https://youtube.com/@itshalib1"><img src="img/bugsa.PNG" class="img-responsive img-border" alt=""></a>
-          </div>
-          <div class="probootstrap-card-text">
-            <h2 class="probootstrap-card-heading mb0">Bug Bounty</h2>
-            <p class="category">اكتشاف ثغرات المواقع</p>
-            <p>في هذه السلسلة والدورات ستتعلم كيفية كشف ثغرات المواقع وحمايتها وطريقة الابلاغ عن ثغرة لكسب جائزة ماليه</p>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-        <div class="col-md-6 probootstrap-animate" data-animate-effect="fadeInRight">
-
-          <h2>
-            <div class="probootstrap-video">
-                <a href="single-page.html"  class="clickable-link">
-                    <img src="img/coursesv5.PNG" alt="Course Image" class="img-responsive img-border">
-                    <p>ㅤ</p> <!-- Space or additional text -->
-                    <figcaption>الكورسات</figcaption>
-                </a>
-            </div>
-        </h2>
-        
-          <p>ㅤ</p>
-         
-          <p>ㅤ</p>
-
-          <h2>
-            <div class="probootstrap-video">
-                <a href="single-page2.html"  class="clickable-link">
-                    <img src="img/documentv2.PNG" alt="Course Image" class="img-responsive img-border">
-                    <p>ㅤ</p> <!-- Space or additional text -->
-                    <figcaption>المستندات</figcaption>
-                </a>
-            </div>
-        </h2>
-        
-
-        <p>ㅤ</p>
-         
-        <p>ㅤ</p>
-
-        <h2>
-          <div class="probootstrap-video">
-              <a href="social.html"  class="clickable-link">
-                  <img src="img/سوشل ميديا.png" alt="Course Image" class="img-responsive img-border">
-                  <p>ㅤ</p> <!-- Space or additional text -->
-                  <figcaption> ! اضغط هنا </figcaption>
-              </a>
-          </div>
-      </h2>
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- END section -->
-
-  
-  <section class="probootstrap-section">
-
-  </section>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="service left-icon probootstrap-animate">
-
-            <div class="icon">
-              <i class="icon-laptop3"></i>
-            </div>
-            <div class="text">
-              <h3 class="heading">هدفنا</h3>
-              <p>.. هدفنا هو تعليم الجميع </p>
-              <p>! الكل يستحق العلم</p>
-             <!--- <p><a href="single-page.html">أقراء المزيد</a></p> -->
-            </div>
-
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service left-icon probootstrap-animate">
-            <div class="icon">
-              <i class="icon-presentation"></i>
-            </div>
-            <div class="text">
-              <h3 class="heading">نمو الفريق</h3>
-              <p>قد بدا فريق حليب في اواخر عام 2024 بخبرة كبيرة سابقة تم بنائها من سنين ونجح في تحقيق العلم لأكثر من 20,000 شخص</p>
-            <!--  <p><a href="single-page.html">أقراء المزيد</a></p> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service left-icon probootstrap-animate">
-            <div class="icon">
-              <i class="icon-wallet2"></i>
-            </div>
-            <div class="text">
-              <h3 class="heading">هل احتاج لدفع مال للتعلم؟</h3>
-              <p>مع فريق حليب بالتاكيد لا .. ستتعلم الكثير بشكل مجاني</p>
-             <!-- <p><a href="single-page.html">أقراء المزيد</a></p> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-  
-
-  <footer class="probootstrap-footer probootstrap-bg">
-    <div class="container">
-      <div class="row mb60">
-        <div class="col-md-3">
-          <div class="probootstrap-footer-widget">
-            <h4 class="heading">عن حليب</h4>
-            <p>طموحين يحاربون الجهل لإيصال المعلومه للمجتمع العربي بأعلى جودة ممكنة </p>
-            <p><a href="#">... أقراء المزيد</a></p>
-          </div> 
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-footer-widget probootstrap-link-wrap">
-            <h4 class="heading">روابط سريعة</h4>
-            <ul class="stack-link">
-              <li><a href="#">الرئيسية</a></li>
-              <li><a href="#">عن الفريق</a></li>
-              <li><a href="#">الخدمات</a></li>
-              <li><a href="mailto:hackmetree@gmail.com">تواصل والاعلان</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-footer-widget">
-            <h4 class="heading">حسابات الفريق</h4>
-            <ul class="stack-link">
-              <li><a href="https://www.youtube.com/@itshalib1" target="_blank"><i class="icon-youtube"></i></a></li>
-              <li><a href="https://instagram.com/itshalib" target="_blank"><i class="icon-instagram2"></i></a></li>
-              <li><a href="https://t.me/itshalib" target="_blank"><i class="icon-telegram"></i></a></li>
-              <li><a href="https://x.com/itshalib" target="_blank"><i class="icon-twitter"></i></a></li>
-            </ul>
-          </div> 
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-footer-widget probootstrap-link-wrap">
-            <h4 class="heading">حليب</h4>
-            <p> جميع الحقوق تعود لفريق حليب ولا يسمح بأخذ أي شيء يقدمه </p>
-          </div>
-        </div>
-      </div>
-      <div class="row copyright">
-        <div class="col-md-6">
-          <div class="probootstrap-footer-widget">
-            <p>&copy; 2024 <a href=""></a>جميع الحقوق تعود ل<a href="">حليب</a> <br><a href=""></a></p>
-          </div>
-        </div>
-       
-      </div>
-    </div>
-  </footer>
-
-  <div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
-  </div>
-  <script src="js/scripts.min.js"></script>
-  <script src="js/main.min.js"></script>
-  <script src="js/custom.js"></script>
-
-
-
+        <!-- Additional content goes here -->
     </div>
 
-    <script src="halib.js"></script> <!-- Include the halib.js file -->
+    <script src="halib.js"></script>
     <script>
         const passwordInput = document.getElementById("passwordInput");
         const submitBtn = document.getElementById("submitBtn");
@@ -453,16 +107,17 @@
             if (validatePassword(enteredPassword)) { // Call the function from halib.js
                 notification.textContent = "Access Granted!";
                 notification.className = "success"; // Apply success class
-                content.style.display = "block"; // Show the content
-                document.getElementById("loginContainer").style.display = "none"; // Hide login container
+                setTimeout(() => {
+                    window.location.href = "https://itshalibcom/cer.html"; // Redirect to the URL
+                }, 1000); // Delay for 1 second before redirecting
             } else {
-                notification.textContent = "Incorrect Password";
+                notification.textContent = "Incorrect Password Please try again";
                 notification.className = "error"; // Apply error class
                 content.style.display = "none"; // Hide content on incorrect password
             }
+            passwordInput.value = ""; // Clear the input field after submission
         });
 
-        // Allow submitting with Enter key
         passwordInput.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
                 submitBtn.click();

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        h1 {
+            color: #f4f4f4; /* Light gray for the title */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+            color: #7c1212; /* Text color */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .form-container:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+        label {
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 250px;
+            transition: border 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border: 2px solid rgb(19, 174, 29); /* Green border on focus */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgb(175, 175, 175); /* Gray button */
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #2ca314; /* Darker green on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Certificate from itshalib.com</h1>
+    <div class="form-container">
+        <label for="studentName">Enter Student Name:</label>
+        <input type="text" id="studentName" required>
+        <button id="generateBtn">Generate Certificate</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script>
+        // Referrer check
+        window.onload = function() {
+            const allowedReferrer = "https://itshalib.com/paid.html"; // Change this to the allowed page URL
+
+            // Check if the referrer matches
+            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
+                // Redirect if not coming from the allowed page
+                window.location.href = "https://itshalib.com"; // Redirect to another page
+            }
+        };
+
+        document.getElementById('generateBtn').addEventListener('click', async function() {
+            const studentName = document.getElementById('studentName').value.trim();
+            if (!studentName) {
+                alert('Please enter a name');
+                return;
+            }
+
+            const today = new Date();
+            const formattedDate = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
+
+            try {
+                const existingPdfBytes = await fetch('fonts/icomoon/Halib certificate.pdf')
+                    .then(res => {
+                        if (!res.ok) throw new Error('Failed to load PDF');
+                        return res.arrayBuffer();
+                    });
+
+                const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+                const pages = pdfDoc.getPages();
+                const firstPage = pages[0];
+
+                const helveticaBoldFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+                const { width, height } = firstPage.getSize();
+                
+                const nameWidth = helveticaBoldFont.widthOfTextAtSize(studentName, 30);
+                const nameX = (width - nameWidth) / 2;
+
+                firstPage.drawText(studentName, {
+                    x: nameX,
+                    y: height - 290,
+                    size: 30,
+                    color: PDFLib.rgb(1, 1, 1),
+                    font: helveticaBoldFont,
+                });
+
+                const dateWidth = helveticaBoldFont.widthOfTextAtSize(formattedDate, 20);
+                const dateX = (width - dateWidth) / 2;
+
+                firstPage.drawText(formattedDate, {
+                    x: dateX,
+                    y: height - 335,
+                    size: 20,
+                    color: PDFLib.rgb(1, 1, 1),
+                    font: helveticaBoldFont,
+                });
+
+                const pdfBytes = await pdfDoc.save();
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${studentName}_Certificate.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } catch (error) {
+                console.error('Error generating certificate:', error);
+                alert(`Error: ${error.message}`);
+            }
+        });
+    </script>
+</body>
+</html>
