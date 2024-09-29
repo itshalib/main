@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <link rel="icon" href="img/halib1.PNG">
+    <title>حليب</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="منصة حليب التعليمية .. تعلم الامن السيبراني مجانا مع حليب 🧑‍💻">
+    <meta name="keywords" content="itshalib, halib, halib hack, حليب, حليب هكر, حليب هاكنق, منصة حليب, منصة حليب التعليمية, تعلم الهاكنق, تعلم الامن السيبراني, حليب امن سيبراني, تعلم التهكير, كيف اتعلم هاكنق, كيف اتعلم التهكير, منصة امن سيبراني, منصة تهكير, هابي مود">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #4a4a4a, #000000); /* Gradient background */
+            color: white; /* Text color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+        #loginContainer {
+            text-align: center; color: #000000;
+            
+            padding: 20px; /* Added padding for better spacing */
+            border-radius: 10px; /* Rounded corners */
+            background-color: rgba(126, 126, 126, 0.668); /* Semi-transparent background */
+        }
+
+        h2 {
+            color: rgb(255, 255, 255); /* Change heading color to black */
+        }
+        
+        input[type="password"] {
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+            width: 200px;
+            border: 2px solid rgb(0, 0, 0); /* Solid border */
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            color: rgb(0, 0, 0); /* Text color in input */
+        }
+        button {
+            padding: 12px 17px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #111111; /* Button color */
+            color: white;
+            cursor: pointer;
+            float: right; /* Align button to the right */
+        }
+        button:hover {
+            background-color: #d35400; /* Darker shade on hover */
+        }
+        #notification {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .error {
+            color: rgb(203, 19, 19);
+            font-weight: bolder;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .success {
+            color: green;
+        }
+        #content {
+            display: none; /* Hidden initially */
+            margin-top: 20px;
+            text-align: left;
+            width: 80%; /* Adjust width as needed */
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="loginContainer">
+        <h2>Enter Password to Access</h2>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <button id="submitBtn">Submit</button>
+        <div id="notification"></div>
+    </div>
+    
+    <div id="content">
+        <!-- Additional content goes here -->
+    </div>
+
+    <script src="halib.js"></script>
+    <script>
+        const passwordInput = document.getElementById("passwordInput");
+        const submitBtn = document.getElementById("submitBtn");
+        const notification = document.getElementById("notification");
+        const content = document.getElementById("content");
+
+        submitBtn.addEventListener("click", () => {
+            const enteredPassword = passwordInput.value;
+            notification.textContent = ""; // Clear previous notifications
+            
+            if (validatePassword(enteredPassword)) { // Call the function from halib.js
+                notification.textContent = "Access Granted!";
+                notification.className = "success"; // Apply success class
+                else {
+                notification.textContent = "Incorrect Password Please try again";
+                notification.className = "error"; // Apply error class
+                content.style.display = "none"; // Hide content on incorrect password
+            }
+            passwordInput.value = ""; // Clear the input field after submission
+        });
+
+        passwordInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                submitBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
