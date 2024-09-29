@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .hidden { display: none; }
+        .container { margin: 20px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Protected Content</h1>
+        <div id="content" class="hidden">
+            <p>Well done, now you can go the next challenge.</p>
+        </div>
+        <div id="login">
+            <label for="password">Enter Password:</label>
+            <input type="password" id="password" />
+            <button onclick="checkPassword()">Submit</button>
+            <p id="message" class="error"></p>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            const correctPassword = 'html'; //password for page
+            const message = document.getElementById('message');
+            const content = document.getElementById('content');
+
+            if (passwordInput === correctPassword) {
+                content.classList.remove('hidden');
+                message.textContent = '';
+                setTimeout(() => {
+                    window.location.href = "https://itshalib.com/"; 
+                }, 1000);
+            } else {
+                message.textContent = 'Incorrect password. Please try again.';
+            }
+        }
+    </script>
+</body>
+</html>
