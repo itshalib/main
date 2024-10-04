@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag</title>
+    <script src="flag2.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a default font */
+        }
+        pre {
+            font-size: 1.5em; /* Adjust the size as needed */
+            line-height: 1.6;  /* Adjust line height for better readability */
+            background-color: #f0f0f0; /* Optional: Light gray background */
+            padding: 10px;    /* Optional: Padding for spacing */
+            border-radius: 5px; /* Optional: Rounded corners */
+            overflow: auto;    /* Optional: Enable scrolling for overflow */
+            display: inline-block; /* Keep it inline for button alignment */
+            margin-right: 10px; /* Space between output and button */
+        }
+        button {
+            font-size: 1.5em; /* Match the button font size */
+            padding: 5px 10px; /* Padding for the button */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+        .loading {
+            display: none; /* Initially hidden */
+            font-size: 1.5em; /* Match size */
+            margin-right: 10px; /* Space between loading text and button */
+        }
+    </style>
+</head>
+<body>
+    <h1>Your flag is being generated</h1>
+    <div style="display: flex; align-items: center;">
+        <span class="loading" id="loading">Loading...</span>
+        <pre id="output"></pre>
+        <button id="copyButton">Copy</button>
+    </div>
+
+    <script>
+        // Referrer check
+       window.onload = function() {
+            const allowedReferrer = "https://itshalib.com/ctf2redirect.html"; // Corrected URL
+
+            // Check if the referrer matches
+            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
+                // Redirect if not coming from the allowed page
+                window.location.href = "https://itshalib.com"; // Redirect to another page
+            }
+        };
+  
+        // Main script for output generation and copying
+        document.addEventListener("DOMContentLoaded", function() {
+            const outputElement = document.getElementById('output');
+            const copyButton = document.getElementById('copyButton');
+            const loadingElement = document.getElementById('loading');
+
+            // Check if getOutput function is defined
+            if (typeof getOutput === 'function') {
+                // Show loading indicator
+                loadingElement.style.display = 'inline';
+                
+                // Delay output generation by 2 seconds
+                setTimeout(() => {
+                    outputElement.textContent = getOutput();
+                    
+                    // Hide loading indicator after output is generated
+                    loadingElement.style.display = 'none';
+                }, 2000);
+            } else {
+                outputElement.textContent = "Output generation function not found.";
+            }
+
+            copyButton.addEventListener('click', function() {
+                // Select the text content of the output
+                const textToCopy = outputElement.textContent;
+
+                // Create a temporary textarea element to hold the text
+                const textarea = document.createElement('textarea');
+                textarea.value = textToCopy;
+                document.body.appendChild(textarea);
+                textarea.select();
+
+                // Copy the text to the clipboard
+                document.execCommand('copy');
+
+                // Remove the textarea element from the document
+                document.body.removeChild(textarea);
+
+                // Optionally, provide feedback to the user
+                alert('Text copied to clipboard!');
+            });
+        });
+    </script>
+</body>
+</html>

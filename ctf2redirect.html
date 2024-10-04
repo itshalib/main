@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; url=https://itshalib.com/flag.html">
+</head>
+<body>
+
+    <script>
+        window.onload = function() {
+            const allowedReferrer = "https://itshalib.com/ctf2.html"; // Corrected URL
+
+            // Check if the referrer matches
+            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
+                // Redirect if not coming from the allowed page
+                window.location.href = "https://itshalib.com/flag.html"; // Redirect to another page
+            } else {
+                // Proceed with the redirect to flag1.html
+                window.location.href = "https://itshalib.com/flag.html";
+            }
+        };
+    </script>
+    
+    <p>If you are not redirected automatically, follow this <a href="https://itshalib.com/flag.html">link</a>.</p>
+</body>
+</html>
