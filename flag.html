@@ -6,8 +6,23 @@
     <title>Obfuscated String Example</title>
 </head>
 <body>
-    <h1>Your Flag:</h1>
+    <h1>Your flag:</h1>
     <div id="output"></div>
-    <script src="flag1.js"></script> <!-- Link to the external JavaScript file -->
+    <script>
+    window.onload = function() {
+        const allowedReferrer = "https://itshalib.com/ctf1redirect.html"; // Change this to the allowed page URL
+
+        // Check if the referrer matches
+        if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
+            // Redirect if not coming from the allowed page
+            window.location.href = "https://itshalib.com"; // Redirect to another page
+        }
+    };
+    
+    </script>
+    <script>
+        
+    src="flag1.js"</script> 
+    
 </body>
 </html>
