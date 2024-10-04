@@ -10,17 +10,19 @@
 
     <script>
         window.onload = function() {
-            const allowedReferrer = "https://itshalib.com/ctf1.html"; // Change this to the allowed page URL
-    
+            const allowedReferrer = "https://itsahilab.com/ctf1.html"; // Corrected URL
+
             // Check if the referrer matches
             if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
                 // Redirect if not coming from the allowed page
-                window.location.href = "https://itshalib.com"; // Redirect to another page
+                window.location.href = "https://itsahilab.com"; // Redirect to another page
+            } else {
+                // Proceed with the redirect to flag1.html
+                window.location.href = "https://itsahilab.com/flag1.html";
             }
         };
-        
-        </script>
-        
+    </script>
+    
     <p>If you are not redirected automatically, follow this <a href="https://itsahilab.com/flag1.html">link</a>.</p>
 </body>
 </html>
