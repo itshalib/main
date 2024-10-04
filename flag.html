@@ -9,20 +9,20 @@
     <h1>Your flag:</h1>
     <div id="output"></div>
     <script>
-    window.onload = function() {
-        const allowedReferrer = "https://itshalib.com/ctf1redirect.html"; // Change this to the allowed page URL
+        window.onload = function() {
+            const allowedReferrer = "https://itshalib.com/ctf1redirect.html"; // Change this to the allowed page URL
 
-        // Check if the referrer matches
-        if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
-            // Redirect if not coming from the allowed page
-            window.location.href = "https://itshalib.com"; // Redirect to another page
-        }
-    };
-    
+            // Check if the referrer matches
+            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
+                // Redirect if not coming from the allowed page
+                window.location.href = "https://itshalib.com"; // Redirect to another page
+            } else {
+                // If the referrer is correct, load the flag
+                const script = document.createElement('script');
+                script.src = "flag1.js"; // Corrected this line
+                document.body.appendChild(script);
+            }
+        };
     </script>
-    <script>
-        
-    src="flag1.js"</script> 
-    
 </body>
 </html>
