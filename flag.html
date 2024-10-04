@@ -6,6 +6,9 @@
     <title>JavaScript Output</title>
     <script src="flag1.js" defer></script>
     <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a default font */
+        }
         pre {
             font-size: 1.5em; /* Adjust the size as needed */
             line-height: 1.6;  /* Adjust line height for better readability */
@@ -21,37 +24,39 @@
             padding: 5px 10px; /* Padding for the button */
             cursor: pointer; /* Change cursor to pointer on hover */
         }
+        .loading {
+            display: none; /* Initially hidden */
+            font-size: 1.5em; /* Match size */
+            margin-right: 10px; /* Space between loading text and button */
+        }
     </style>
 </head>
 <body>
     <h1>Your flag is being generated</h1>
     <div style="display: flex; align-items: center;">
+        <span class="loading" id="loading">Loading...</span>
         <pre id="output"></pre>
         <button id="copyButton">Copy</button>
     </div>
 
     <script>
-        // Referrer check
-        window.onload = function() {
-            const allowedReferrer = "https://itshalib.com/ctf1redirect.html"; // Change this to the allowed page URL
-
-            // Check if the referrer matches
-            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
-                // Redirect if not coming from the allowed page
-                window.location.href = "https://itshalib.com"; // Redirect to another page
-            }
-        };
-    </script>
-
-    <script>
-        // This script waits for the DOM to load before running
         document.addEventListener("DOMContentLoaded", function() {
             const outputElement = document.getElementById('output');
             const copyButton = document.getElementById('copyButton');
+            const loadingElement = document.getElementById('loading');
 
             // Check if getOutput function is defined
             if (typeof getOutput === 'function') {
-                outputElement.textContent = getOutput();
+                // Show loading indicator
+                loadingElement.style.display = 'inline';
+                
+                // Delay output generation by 2 seconds
+                setTimeout(() => {
+                    outputElement.textContent = getOutput();
+                    
+                    // Hide loading indicator after output is generated
+                    loadingElement.style.display = 'none';
+                }, 2000);
             } else {
                 outputElement.textContent = "Output generation function not found.";
             }
@@ -59,19 +64,19 @@
             copyButton.addEventListener('click', function() {
                 // Select the text content of the output
                 const textToCopy = outputElement.textContent;
-                
+
                 // Create a temporary textarea element to hold the text
                 const textarea = document.createElement('textarea');
                 textarea.value = textToCopy;
                 document.body.appendChild(textarea);
                 textarea.select();
-                
+
                 // Copy the text to the clipboard
                 document.execCommand('copy');
-                
+
                 // Remove the textarea element from the document
                 document.body.removeChild(textarea);
-                
+
                 // Optionally, provide feedback to the user
                 alert('Text copied to clipboard!');
             });
