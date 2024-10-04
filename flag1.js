@@ -9,7 +9,18 @@ function encodeString() {
         33, 64, 35  // !@#
     ];
 
- 
+    // Applying a simple obfuscation (e.g., adding a constant to each code)
+    const obfuscatedCodes = originalCodes.map(code => code + 3);
+    return obfuscatedCodes;
+}
+
+// Function to decode the obfuscated character codes back to characters
+function decodeCharacterCodes(codes) {
+    // Reverse the obfuscation by subtracting the constant
+    const originalCodes = codes.map(code => code - 3);
+    return String.fromCharCode(...originalCodes);
+}
+
 // Function to generate the obfuscated string
 function generateObfuscatedString() {
     const encoded = encodeString();
@@ -17,17 +28,7 @@ function generateObfuscatedString() {
     return result;
 }
 
-// Function to display the string in the HTML
-function displayString() {
-    const specificString = generateObfuscatedString();
-    const outputElement = document.getElementById("output");
-    
-    if (outputElement) {
-        outputElement.innerText = specificString;
-    } else {
-        console.error("Output element not found.");
-    }
+// Function to get the output string for display
+function getOutput() {
+    return generateObfuscatedString();
 }
-
-// Execute display function when the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", displayString);
