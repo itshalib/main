@@ -9,17 +9,7 @@ function encodeString() {
         33, 64, 35  // !@#
     ];
 
-    // Apply a complex mathematical transformation to create larger numbers
-    return originalCodes.map(code => (code * 1000) + 9999); // Example transformation
-}
-
-// Function to decode the encoded character codes with reverse math
-function decodeCharacterCodes(codes) {
-    // Reverse the transformation applied during encoding
-    const originalCodes = codes.map(code => (code - 9999) / 1000);
-    return String.fromCharCode(...originalCodes); // Convert back to characters
-}
-
+ 
 // Function to generate the obfuscated string
 function generateObfuscatedString() {
     const encoded = encodeString();
