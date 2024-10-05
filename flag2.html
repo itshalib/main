@@ -43,7 +43,16 @@
 
     <script>
     
-  
+    // Referrer check
+       window.onload = function() {
+            const allowedReferrer = "https://itshalib.com/ctf2redirect.html"; // Corrected URL
+
+            // Check if the referrer matches
+            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
+                // Redirect if not coming from the allowed page
+                window.location.href = "https://itshalib.com"; // Redirect to another page
+            }
+        };
         // Main script for output generation and copying
         document.addEventListener("DOMContentLoaded", function() {
             const outputElement = document.getElementById('output');
