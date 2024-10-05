@@ -1,4 +1,4 @@
-// Array of original character codes (You should define this)
+
 const originalCodes = [
     90, 88, 67, 86, 66, 78, 77,
     97, 115, 100,                
