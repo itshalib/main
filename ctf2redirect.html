@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=https://itshalib.com/flag2.html">
 </head>
 <body>
-
     <script>
         window.onload = function() {
-            const allowedReferrer = "https://itshalib.com/ctf2.html"; // Corrected URL
+            const allowedReferrer = "https://itshalib.com/ctf1.html"; // Correct referrer URL
 
             // Check if the referrer matches
-            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
-                // Redirect if not coming from the allowed page
-                window.location.href = "https://itshalib.com/flag2.html"; // Redirect to another page
+            if (document.referrer === allowedReferrer) {
+                // Redirect to flag1.html if coming from ctf1.html
+                window.location.href = "https://itshalib.com/flag1.html";
             } else {
-                // Proceed with the redirect to flag1.html
-                window.location.href = "https://itshalib.com/flag2.html";
+                // Redirect to itshalib.com for all other cases
+                window.location.href = "https://itshalib.com";
             }
         };
     </script>
     
-    <p>If you are not redirected automatically, follow this <a href="https://itshalib.com/flag2.html">link</a>.</p>
+    <p>If you are not redirected automatically, follow this <a href="https://itshalib.com">link</a>.</p>
 </body>
 </html>
