@@ -43,10 +43,15 @@
         // Referrer check
         window.onload = function() {
             const allowedReferrer = "https://itshalib.com/ctf1redirect.html"; // Corrected URL
-if (!document.referrer || !document.referrer.includes(allowedReferrer)) {
-    window.location.href = "https://itshalib.com"; // Redirect to another page
-}
 
+            // Log the referrer for debugging
+            console.log('Referrer:', document.referrer);
+
+            // Check if the referrer matches
+            if (!document.referrer || !document.referrer.includes(allowedReferrer)) {
+                // Redirect if not coming from the allowed page
+                window.location.href = "https://itshalib.com"; // Redirect to another page
+            }
         };
 
         // Main script for output generation and copying
