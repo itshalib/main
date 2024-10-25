@@ -15,20 +15,22 @@
     <div class="container">
         <h1>Protected Content</h1>
         <div id="content" class="hidden">
-            <p>Well done, now you can go the next challenge.</p>
+            <p>Well done, now you can go to the next challenge.</p>
         </div>
         <div id="login">
             <label for="password">Enter Password:</label>
             <input type="password" id="password" />
-            <button onclick="checkPassword()">Submit</button>
+            <button id="submitBtn">Submit</button>
             <p id="message" class="error"></p>
         </div>
     </div>
 
     <script>
+        document.getElementById('submitBtn').addEventListener('click', checkPassword);
+
         function checkPassword() {
             const passwordInput = document.getElementById('password').value;
-            const correctPassword = 'html'; //password for page
+            const correctPassword = 'html'; // Password for page
             const message = document.getElementById('message');
             const content = document.getElementById('content');
 
@@ -36,7 +38,7 @@
                 content.classList.remove('hidden');
                 message.textContent = '';
                 setTimeout(() => {
-                    window.location.href = "https://itshalib.com/ctf1redirect.html"; 
+                    window.location.href = "ctf1redirect.html"; 
                 }, 1000);
             } else {
                 message.textContent = 'Incorrect password. Please try again.';
