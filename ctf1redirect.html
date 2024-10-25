@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=https://itshalib.com/flag.html">
+    <title>Redirect Page</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const allowedReferrer = "https://itshalib.com/ctf1redirect.html";
+            const referrer = document.referrer;
+
+            if (referrer !== allowedReferrer) {
+                // If the referrer is not allowed, redirect to an error page or show a message
+                window.location.href = "https://itshalib.com/flag.html"; // Change to your error page
+            } else {
+                // Proceed with normal page load
+                document.body.innerHTML = "<h1>Welcome to the redirected page!</h1>";
+            }
+        });
+    </script>
 </head>
 <body>
-
-    <script>
-        window.onload = function() {
-            const allowedReferrer = "https://itshalib.com/ctf1.html"; // Corrected URL
-
-            // Check if the referrer matches
-            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
-                // Redirect if not coming from the allowed page
-                window.location.href = "https://itshalib.com"; // Redirect to another page
-            } else {
-                // Proceed with the redirect to flag1.html
-                window.location.href = "https://itshalib.com/flag.html";
-            }
-        };
-    </script>
-    
-    <p>If you are not redirected automatically, follow this <a href="https://itshalib.com/flag.html">link</a>.</p>
 </body>
 </html>
