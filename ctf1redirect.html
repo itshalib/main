@@ -9,12 +9,12 @@
             const allowedReferrer = "https://itshalib.com/CTF1.html";
             const referrer = document.referrer;
 
-            if (referrer !== allowedReferrer) {
-                // If the referrer is not allowed, redirect to an error page or show a message
-                window.location.href = "https://itshalib.com/404.html"; // Change to your error page
+            if (referrer === allowedReferrer) {
+                // Redirect to the flag page if coming from the allowed referrer
+                window.location.href = "https://itshalib.com/flag.html";
             } else {
-                // Proceed with normal page load
-                document.body.innerHTML = "<h1>Welcome to the redirected page!</h1>";
+                // Redirect to the main site for any other referrer
+                window.location.href = "https://itshalib.com";
             }
         });
     </script>
