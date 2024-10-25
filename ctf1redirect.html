@@ -6,12 +6,12 @@
     <title>Redirect Page</title>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const allowedReferrer = "https://itshalib.com/ctf1redirect.html";
+            const allowedReferrer = "https://itshalib.com/CTF1.html";
             const referrer = document.referrer;
 
             if (referrer !== allowedReferrer) {
                 // If the referrer is not allowed, redirect to an error page or show a message
-                window.location.href = "https://itshalib.com/flag.html"; // Change to your error page
+                window.location.href = "https://itshalib.com/404.html"; // Change to your error page
             } else {
                 // Proceed with normal page load
                 document.body.innerHTML = "<h1>Welcome to the redirected page!</h1>";
