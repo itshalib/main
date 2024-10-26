@@ -1,0 +1,13 @@
+user
+usr
+data
+ip
+logs
+log
+database.txt
+robot.txt
+page
+adminpage
+log.txt
+admin
+admin
