@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Login Form</title>
+    <link rel="stylesheet" href="css/CTF3.css"> <!-- Your existing CSS file -->
+</head>
+<body>
+    <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> 
+        
+        <div class="signin">
+            <div class="content">
+                <h2>Sign In<br><h3>Halib</h3></h2>
+                <form id="loginForm" class="form">
+                    <div class="inputBox">
+                        <input type="text" id="username" required>
+                        <i>Username</i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" id="password" required>
+                        <i>Password</i>
+                    </div>
+                    <div class="links">
+                        <a href="#">Forgot Password</a>
+                        <a href="#">Signup</a>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" value="Login">
+                    </div>
+                    <div id="message"></div> <!-- Message display -->
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Function to decode credentials
+function decodeCredentials(encoded) {
+    return atob(encoded);
+}
+
+// Store encoded credentials
+const aGFsaWIaGFsaWIaGFsaWIaGFsaWI = "aGFsaWI="; 
+const HFUnu8YBUIAEFtaoisdbBYEIUGEAF = "aGFsaWIxMjM="; 
+
+const c = decodeCredentials(aGFsaWIaGFsaWIaGFsaWIaGFsaWI);
+const d = decodeCredentials(HFUnu8YBUIAEFtaoisdbBYEIUGEAF);
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const e = document.getElementById('username').value;
+    const f = document.getElementById('password').value;
+
+    // Check against decoded credentials
+    if (e === c) {
+        if (f === d) {
+            document.getElementById('message').textContent = "Login successful!";
+            document.getElementById('message').style.color = "green"; // Success message color
+            setTimeout(function() {
+                        window.location.href = "https://itshalib.com";
+                    }, 700);
+        } else {
+            document.getElementById('message').textContent = "Incorrect password.";
+        }
+    } else {
+        document.getElementById('message').textContent = "Incorrect username.";
+    }
+});
+
+    </script>
+</body>
+</html>
