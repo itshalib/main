@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brute Force CTF Challenge</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CTF Brute Force Challenge</h1>
+        <p class="description">Enter the correct password to reveal the flag.</p>
+        
+        <form id="passwordForm">
+            <input type="password" id="passwordInput" placeholder="Enter password" required>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <div id="flagContainer" class="hidden">
+            <p class="flag">Congratulations! You've found the flag: <strong>FLAG{correct_password_123}</strong></p>
+        </div>
+        
+        <p class="hint">Hint: The password is a simple phrase.</p>
+        <p id="attempts" class="attempts">Attempts: 0</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
