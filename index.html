@@ -258,7 +258,7 @@
               <figcaption> ! اضغط هنا</figcaption>
             </a>
             <p>ㅤ</p> <!-- Space or additional text -->
-            <a href="hint1"  class="clickable-link">
+            <a href="hint1.html"  class="clickable-link">
               <p>لمحة</p>
               </a>
           </div>
@@ -279,7 +279,7 @@
               <figcaption> ! اضغط هنا</figcaption>
             </a>
             <p>ㅤ</p> <!-- Space or additional text -->
-            <a href="hint2"  class="clickable-link">
+            <a href="hint2.html"  class="clickable-link">
               <p>لمحة</p>
               </a>
           </div>
@@ -302,7 +302,7 @@
               <figcaption> ! اضغط هنا</figcaption>
               <p>ㅤ</p> <!-- Space or additional text -->
             </a>
-            <a href="hint3"  class="clickable-link">
+            <a href="hint3.html"  class="clickable-link">
             <p>لمحة</p>
             </a>
           </div>
@@ -363,12 +363,112 @@
     </div>
   </section>
  
-  
+  <section class="probootstrap-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="section-heading text-center">
+                    <h2>أرسل ملاحظاتك</h2>
+                </div>
+                <form id="note-form">
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">ملاحظتك</label>
+                        <textarea id="note" class="form-control" rows="4" placeholder="اكتب ملاحظتك هنا" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">إرسال</button>
+                </form>
+                <!-- Message output section -->
+                <div id="response-message"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+  const TOKEN = "8010286590:AAHWLhVtcgYORbyJ9IHZhxou7IdVf0BaDLE";  // Replace with your bot's token
+  const CHAT_ID = "7153864821";  // Replace with your chat ID
+  const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+
+  // Function to fetch user's IP address from an external API
+  function getUserIp() {
+      return axios.get('https://api.ipify.org?format=json')
+          .then(response => response.data.ip)
+          .catch(error => {
+              console.error("Error fetching IP address:", error);
+              return 'IP Not Available';
+          });
+  }
+
+  // Function to get platform info
+  function getPlatformInfo() {
+      return `${navigator.platform} - ${navigator.userAgent}`;
+  }
+
+  // Handle form submission
+  document.getElementById('note-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
+
+      // Get form values
+      const email = document.getElementById('email').value;
+      const note = document.getElementById('note').value;
+
+      // Get platform info and IP address
+      Promise.all([getUserIp(), Promise.resolve(getPlatformInfo())]).then(([userIp, platformInfo]) => {
+          // Prepare the message to send
+          const message = `
+              <b>ملاحظة جديدة</b>\n
+              <b>البريد الإلكتروني:</b> ${email}\n
+              <b>الملاحظة:</b> ${note}\n
+              <b>عنوان الـ IP:</b> ${userIp}\n
+              <b>المتصفح والنظام:</b> ${platformInfo}
+          `;
+          
+          // Debugging: Log the message to console before sending
+          console.log('Sending message:', message);
+
+          // Send the message to Telegram
+          axios.post(URI_API, {
+              chat_id: CHAT_ID,
+              parse_mode: 'html',
+              text: message
+          }).then(response => {
+              console.log('Message sent successfully:', response.data);
+
+              // Display success message
+              document.getElementById('response-message').innerHTML = `
+                  <div style="color: green; padding: 10px; border: 1px solid green; border-radius: 5px;">
+                      تم إرسال ملاحظتك بنجاح!
+                  </div>
+              `;
+              // Clear the form
+              document.getElementById('note-form').reset();
+          }).catch(error => {
+              console.error('Error sending message:', error);
+
+              // Display error message
+              document.getElementById('response-message').innerHTML = `
+                  <div style="color: red; padding: 10px; border: 1px solid red; border-radius: 5px;">
+                      حدث خطأ أثناء إرسال الملاحظة. حاول مرة أخرى.
+                  </div>
+              `;
+          });
+      });
+  });
+</script>
+
 
   <footer class="probootstrap-footer probootstrap-bg">
+    
     <div class="container">
       <div class="row mb60">
         <div class="col-md-3">
+          
           <div class="probootstrap-footer-widget">
             <h4 class="heading">عن حليب</h4>
             <p>طموحين يحاربون الجهل لإيصال المعلومه للمجتمع العربي بأعلى جودة ممكنة </p>
