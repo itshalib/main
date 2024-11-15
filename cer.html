@@ -73,16 +73,23 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script>
-        // Referrer check
+       
         window.onload = function() {
-            const allowedReferrer = "https://itshalib.com/paid.html"; // Change this to the allowed page URL
+    const allowedReferrers = [
+        "https://itshalib.com/paid.html", 
+        "https://itshalib.com/ccna.html", 
+        "https://itshalib.com/cissp.html"
+    ];
 
-            // Check if the referrer matches
-            if (!document.referrer || !document.referrer.startsWith(allowedReferrer)) {
-                // Redirect if not coming from the allowed page
-                window.location.href = "https://itshalib.com"; // Redirect to another page
-            }
-        };
+  
+    const isAllowedReferrer = allowedReferrers.some(referrer => document.referrer.startsWith(referrer));
+
+    if (!isAllowedReferrer) {
+       
+        window.location.href = "https://itshalib.com";
+    }
+};
+
 
         document.getElementById('generateBtn').addEventListener('click', async function() {
             const studentName = document.getElementById('studentName').value.trim();
