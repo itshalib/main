@@ -69,49 +69,39 @@
             margin-top: 15px;
         }
 
-   /* Base button style */
-#answers-container button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 5px;
-    background-color: #333;  /* Dark button */
-    border: 1px solid #444;  /* Darker border */
-    color: #fff;  /* White text */
-    cursor: pointer;
-}
+        /* Base button style */
+        #answers-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #333;  /* Dark button */
+            border: 1px solid #444;  /* Darker border */
+            color: #fff;  /* White text */
+            cursor: pointer;
+        }
 
-/* Hover effect */
-#answers-container button:hover {
-    background-color: #6a6a6a;  /* Lighter button hover effect */
-}
+        /* Hover effect */
+        #answers-container button:hover {
+            background-color: #6a6a6a;  /* Lighter button hover effect */
+        }
 
-/* Active (clicked) state */
-#answers-container button:active {
-    background-color: #fff;  /* White background when clicked */
-    color: #bdbdbd;  /* Slightly lighter text color for contrast */
-    border: 1px solid #333;  /* Dark border */
-}
+        /* Active (clicked) state */
+        #answers-container button:active {
+            background-color: #fff;  /* White background when clicked */
+            color: #bdbdbd;  /* Slightly lighter text color for contrast */
+            border: 1px solid #333;  /* Dark border */
+        }
 
-/* Selected state (button clicked and retained) */
-#answers-container button.selected {
-    background-color: #fff;  /* White background when selected */
-    color: #121212;  /* Dark text color for contrast */
-    border: 1px solid #333;  /* Dark border */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-}
-
-
-       
+        /* Selected state (button clicked and retained) */
+        #answers-container button.selected {
+            background-color: #fff;  /* White background when selected */
+            color: #121212;  /* Dark text color for contrast */
+            border: 1px solid #333;  /* Dark border */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        }
 
         #result-container {
             display: none;
-        }
-
-        /* Add a class for selected answer button */
-        .selected {
-            background-color: #fff;  /* White background when selected */
-            color: #121212;  /* Dark text color for contrast */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
         }
 
         #feedback-container {
@@ -122,7 +112,6 @@
 </head>
 <body>
 
-   
     <div id="test-container">
         <!-- Header with question progress -->
         <div class="header">
@@ -131,8 +120,6 @@
                 <div id="progress-bar" class="progress-bar"></div>
             </div>
         </div>
-
-       
 
         <!-- Question and Answers Container -->
         <div id="question-container">
@@ -155,7 +142,7 @@
     <script>
         // List of questions and answers (with options and correct answers)
         const questions = [
-    {
+        {
         question: "What is the primary purpose of the ARP protocol in networking?",
         options: ["To resolve domain names to IP addresses", "To map IP addresses to MAC addresses", "To route packets between different subnets", "To establish secure connections between two devices"],
         correctAnswer: 1 // Option 1 is correct (To map IP addresses to MAC addresses)
@@ -207,12 +194,11 @@
     }
 ];
 
-
         let currentQuestionIndex = 0;
         let score = 0;
         let userAnswers = [];  // To store user answers
 
-        // Function to shuffle an array (for both questions and answers)
+        // Function to shuffle an array (for the questions)
         function shuffleArray(arr) {
             for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -228,13 +214,10 @@
             const question = questions[currentQuestionIndex];
             document.getElementById("question-text").textContent = question.question;
 
-            // Shuffle the answer options for this question
-            shuffleArray(question.options);
-
             const answersContainer = document.getElementById("answers-container");
             answersContainer.innerHTML = ""; // Clear previous answers
 
-            // Create buttons for each answer option
+            // Create buttons for each answer option (order remains the same)
             question.options.forEach((option, index) => {
                 const button = document.createElement("button");
                 button.textContent = option;
@@ -253,65 +236,61 @@
         }
 
         // Function to check the answer and apply visual feedback
-        // Function to check the answer and apply visual feedback
-function checkAnswer(button, selectedIndex, question) {
-    const isCorrect = selectedIndex === question.correctAnswer;
+        function checkAnswer(button, selectedIndex, question) {
+            const isCorrect = selectedIndex === question.correctAnswer;
 
-    // Store the user's answer (index of the selected option)
-    userAnswers[currentQuestionIndex] = { selectedIndex, isCorrect };
+            // Store the user's answer (index of the selected option)
+            userAnswers[currentQuestionIndex] = { selectedIndex, isCorrect };
 
-    // Apply the "selected" class to highlight the chosen button (color change)
-    button.classList.add("selected");
+            // Apply the "selected" class to highlight the chosen button (color change)
+            button.classList.add("selected");
 
-    // If correct, increase the score
-    if (isCorrect) {
-        score++;
-    }
+            // If correct, increase the score
+            if (isCorrect) {
+                score++;
+            }
 
-    // Disable all answer buttons after a short delay to allow for color transition
-    setTimeout(() => {
-        const buttons = document.querySelectorAll("#answers-container button");
-        buttons.forEach(btn => btn.disabled = true); // Disable all answer buttons
-    }, 300);  // Delay to allow time for transition
+            // Disable all answer buttons after a short delay to allow for color transition
+            setTimeout(() => {
+                const buttons = document.querySelectorAll("#answers-container button");
+                buttons.forEach(btn => btn.disabled = true); // Disable all answer buttons
+            }, 300);  // Delay to allow time for transition
 
-    // Wait for 1 second before moving to the next question
-    setTimeout(() => {
-        currentQuestionIndex++;
+            // Wait for 1 second before moving to the next question
+            setTimeout(() => {
+                currentQuestionIndex++;
 
-        if (currentQuestionIndex < questions.length) {
-            loadQuestion();
-        } else {
-            showResults();  // Show results when all questions are done
+                if (currentQuestionIndex < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResults();  // Show results when all questions are done
+                }
+            }, 350); // 1-second delay before moving to the next question
         }
-    }, 350); // 1-second delay before moving to the next question
-}
 
-// Function to show the test results
-// Function to show the test results and redirect to another page
-function showResults() {
-    // Store the results in localStorage
-    localStorage.setItem("score", score);
-    localStorage.setItem("totalQuestions", questions.length);
+        // Function to show the test results
+        function showResults() {
+            // Store the results in localStorage
+            localStorage.setItem("score", score);
+            localStorage.setItem("totalQuestions", questions.length);
 
-    // Store feedback for incorrect answers
-    const feedback = [];
-    userAnswers.forEach((answer, index) => {
-        if (!answer.isCorrect) {
-            const question = questions[index];
-            feedback.push({
-                question: question.question,
-                selectedAnswer: question.options[answer.selectedIndex],
-                correctAnswer: question.options[question.correctAnswer]
+            // Store feedback for incorrect answers
+            const feedback = [];
+            userAnswers.forEach((answer, index) => {
+                if (!answer.isCorrect) {
+                    const question = questions[index];
+                    feedback.push({
+                        question: question.question,
+                        selectedAnswer: question.options[answer.selectedIndex],
+                        correctAnswer: question.options[question.correctAnswer]
+                    });
+                }
             });
+            localStorage.setItem("feedback", JSON.stringify(feedback));
+
+            // Redirect to results page
+            window.location.href = "results.html";
         }
-    });
-    localStorage.setItem("feedback", JSON.stringify(feedback));
-
-    // Redirect to results page
-    window.location.href = "results.html";
-}
-
-
 
         // Function to restart the test
         function restartTest() {
