@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;  /* Dark background */
+            color: #fff;  /* Light text */
+        }
+
+        #test-container {
+            background-color: #1e1e1e;  /* Darker container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #444;
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #4caf50;
+            width: 0%;  /* Default width, will update dynamically */
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 20px;
+            border: none;
+            background-color: #444;  /* Dark button */
+            color: #fff;  /* White text */
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #555;  /* Lighter button hover effect */
+        }
+
+        #answers-container {
+            margin-top: 15px;
+        }
+
+        #answers-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #333;  /* Dark button */
+            border: 1px solid #444;  /* Darker border */
+            color: #fff;  /* White text */
+            cursor: pointer;
+        }
+
+        #answers-container button:hover {
+            background-color: #6a6a6a;  /* Lighter button hover effect */
+        }
+
+        #answers-container button.selected {
+            background-color: #fff;
+            color: #121212;
+            border: 1px solid #333;
+        }
+
+        #result-container {
+            display: none;
+        }
+
+        #feedback-container {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="test-container">
+        <div class="header">
+            <span id="question-progress">Question 1 of 3</span>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div id="question-container">
+            <br>
+            <h2 id="question-text"></h2>
+            <div id="answers-container"></div>
+        </div>
+
+        <div id="result-container">
+            <h2>Your Results</h2>
+            <p id="score"></p>
+            <div id="feedback-container"></div>
+            <button onclick="restartTest()">Restart</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which of the following is considered a best practice for securing passwords?",
+                options: ["Use easily memorable passwords", "Use multi-factor authentication", "Share passwords among team members", "Write passwords on paper for easy access"],
+                correctAnswer: 1 // "Use multi-factor authentication"
+            },
+            {
+                question: "Which of the following is the primary purpose of a firewall?",
+                options: ["To encrypt data on the network", "To monitor user behavior", "To block unauthorized access to the network", "To establish secure communications between networks"],
+                correctAnswer: 2 // "To block unauthorized access to the network"
+            },
+            {
+                question: "What does the principle of 'least privilege' mean in access control?",
+                options: ["Giving all users admin access", "Limiting access to only those resources necessary for the user's role", "Sharing passwords among employees", "Allowing users to perform any task on the network"],
+                correctAnswer: 1 // "Limiting access to only those resources necessary for the user's role"
+            },
+            {
+                question: "Which of the following is a key component of a risk management process?",
+                options: ["Monitoring employee behavior", "Risk assessment", "Encrypting email messages", "Employee training"],
+                correctAnswer: 1 // "Risk assessment"
+            },
+            {
+                question: "Which of the following is a physical security control?",
+                options: ["Firewalls", "Access control systems", "User authentication", "Encryption"],
+                correctAnswer: 1 // "Access control systems"
+            },
+            {
+                question: "Which of the following best describes a Distributed Denial of Service (DDoS) attack?",
+                options: ["A type of attack that involves sending a large amount of data to a single target system", "A social engineering attack used to deceive users into disclosing sensitive information", "An attack where malicious actors use a system to spoof emails", "An attack targeting individual user accounts to steal credentials"],
+                correctAnswer: 0 // "A type of attack that involves sending a large amount of data to a single target system"
+            },
+            {
+                question: "Which type of encryption uses the same key for both encryption and decryption?",
+                options: ["Asymmetric encryption", "Symmetric encryption", "Public key encryption", "Block cipher encryption"],
+                correctAnswer: 1 // "Symmetric encryption"
+            },
+            {
+                question: "Which of the following is a critical aspect of an incident response plan?",
+                options: ["Incident identification", "Encrypting network traffic", "Training employees", "Installing antivirus software"],
+                correctAnswer: 0 // "Incident identification"
+            },
+            {
+                question: "In which situation would you use a digital signature?",
+                options: ["To protect passwords", "To verify the authenticity of a document or software", "To encrypt email messages", "To create a backup of sensitive data"],
+                correctAnswer: 1 // "To verify the authenticity of a document or software"
+            },
+            {
+                question: "What is the purpose of security awareness training?",
+                options: ["To protect physical devices", "To teach employees how to avoid security threats and follow best practices", "To monitor user network activity", "To install security software on all devices"],
+                correctAnswer: 1 // "To teach employees how to avoid security threats and follow best practices"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+
+        shuffleArray(questions);
+
+        function loadQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById("question-text").textContent = question.question;
+            shuffleArray(question.options);
+
+            const answersContainer = document.getElementById("answers-container");
+            answersContainer.innerHTML = "";
+
+            question.options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.onclick = () => checkAnswer(button, index, question);
+                answersContainer.appendChild(button);
+            });
+
+            const progressText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            document.getElementById("question-progress").textContent = progressText;
+
+            const progressBar = document.getElementById("progress-bar");
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function checkAnswer(button, selectedIndex, question) {
+            const isCorrect = selectedIndex === question.correctAnswer;
+            userAnswers[currentQuestionIndex] = { selectedIndex, isCorrect };
+
+            button.classList.add("selected");
+
+            if (isCorrect) {
+                score++;
+            }
+
+            setTimeout(() => {
+                const buttons = document.querySelectorAll("#answers-container button");
+                buttons.forEach(btn => btn.disabled = true);
+            }, 300);
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+
+                if (currentQuestionIndex < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            }, 350);
+        }
+
+        function showResults() {
+            localStorage.setItem("score", score);
+            localStorage.setItem("totalQuestions", questions.length);
+
+            const feedback = [];
+            userAnswers.forEach((answer, index) => {
+                if (!answer.isCorrect) {
+                    const question = questions[index];
+                    feedback.push({
+                        question: question.question,
+                        selectedAnswer: question.options[answer.selectedIndex],
+                        correctAnswer: question.options[question.correctAnswer]
+                    });
+                }
+            });
+            localStorage.setItem("feedback", JSON.stringify(feedback));
+
+            window.location.href = "results.html";
+        }
+
+        function restartTest() {
+            score = 0;
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            shuffleArray(questions);
+            document.getElementById("result-container").style.display = "none";
+            document.getElementById("test-container").style.display = "block";
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
