@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .email-form {
+            background-color: #2c2c2c;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .email-form input {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 300px;
+        }
+        .question-box {
+            background-color: #2c2c2c;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .question-box .question {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .question-box .answer {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .question-box .correct-answer {
+            font-weight: bold;
+            color: #4caf50;
+        }
+        .question-box .selected-answer {
+            font-weight: bold;
+            color: #f44336;
+        }
+        .feedback {
+            text-align: left;
+            margin-top: 20px;
+        }
+        #score {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 15px;
+            margin-top: 20px;
+            border: none;
+            background-color: #444;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .response-message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .success-message {
+            color: green;
+            border: 1px solid green;
+        }
+        .error-message {
+            color: red;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Results</h1>
+        <div id="email-form" class="email-form">
+            <h3>Please enter your email to view the results</h3>
+            <form id="note-form">
+                <input type="email" id="email" placeholder="Your email" required />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="test-results" style="display: none;">
+            <p id="score"></p>
+            <div id="feedback" class="feedback"></div>
+            <button onclick="restartTest()">Take Another Test</button>
+        </div>
+        <div id="response-message"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const TOKEN = "8010286590:AAHWLhVtcgYORbyJ9IHZhxou7IdVf0BaDLE";  // Replace with your bot's token
+        const CHAT_ID = "7153864821";  // Replace with your chat ID
+        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+
+        // Function to fetch user's IP address from an external API
+        function getUserIp() {
+            return axios.get('https://api.ipify.org?format=json')
+                .then(response => response.data.ip)
+                .catch(error => {
+                    console.error("Error fetching IP address:", error);
+                    return 'IP Not Available';
+                });
+        }
+
+        // Function to get platform info
+        function getPlatformInfo() {
+            return `${navigator.platform} - ${navigator.userAgent}`;
+        }
+
+        // Handle form submission
+        document.getElementById('note-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Get form values
+            const email = document.getElementById('email').value;
+
+            // Get platform info and IP address
+            Promise.all([getUserIp(), Promise.resolve(getPlatformInfo())]).then(([userIp, platformInfo]) => {
+                // Get score from localStorage
+                const score = localStorage.getItem("score");
+                const totalQuestions = localStorage.getItem("totalQuestions");
+
+                // Prepare the message to send, including the score
+                const message = `
+                    <b>New Test Result</b>\n
+                    <b>Email:</b> ${email}\n
+                    <b>Score:</b> ${score} out of ${totalQuestions}\n
+                    <b>IP Address:</b> ${userIp}\n
+                    <b>Browser and System:</b> ${platformInfo}
+                `;
+                
+                // Debugging: Log the message to console before sending
+                console.log('Sending message:', message);
+
+                // Send the message to Telegram
+                axios.post(URI_API, {
+                    chat_id: CHAT_ID,
+                    parse_mode: 'html',
+                    text: message
+                }).then(response => {
+                    console.log('Message sent successfully:', response.data);
+
+                    // Display success message
+                    document.getElementById('response-message').innerHTML = `
+                        <div class="response-message success-message">
+                            Your email has been successfully submitted! Now, you can view your results below.
+                        </div>
+                    `;
+                    // Show the results section and hide the email form
+                    document.getElementById('email-form').style.display = 'none';
+                    document.getElementById('test-results').style.display = 'block';
+
+                    // Load results
+                    loadResults();
+                }).catch(error => {
+                    console.error('Error sending message:', error);
+
+                    // Display error message
+                    document.getElementById('response-message').innerHTML = `
+                        <div class="response-message error-message">
+                            There was an error submitting your email. Please try again.
+                        </div>
+                    `;
+                });
+            });
+        });
+
+        // Function to load and display the results from localStorage
+        function loadResults() {
+            const score = localStorage.getItem("score");
+            const totalQuestions = localStorage.getItem("totalQuestions");
+            const feedback = JSON.parse(localStorage.getItem("feedback"));
+
+            // Display the score
+            document.getElementById("score").textContent = `Your score: ${score} out of ${totalQuestions}`;
+
+            // Display feedback for incorrect answers
+            const feedbackContainer = document.getElementById("feedback");
+            if (feedback && feedback.length > 0) {
+                feedback.forEach(item => {
+                    const feedbackElement = document.createElement("div");
+                    feedbackElement.classList.add("question-box");
+
+                    // Add the question text
+                    const questionElement = document.createElement("div");
+                    questionElement.classList.add("question");
+                    questionElement.textContent = `Question: "${item.question}"`;
+                    feedbackElement.appendChild(questionElement);
+
+                    // Add the selected answer
+                    const selectedAnswerElement = document.createElement("div");
+                    selectedAnswerElement.classList.add("answer", "selected-answer");
+                    selectedAnswerElement.textContent = `You selected: "${item.selectedAnswer}"`;
+                    feedbackElement.appendChild(selectedAnswerElement);
+
+                    // Add the correct answer
+                    const correctAnswerElement = document.createElement("div");
+                    correctAnswerElement.classList.add("answer", "correct-answer");
+                    correctAnswerElement.textContent = `Correct answer: "${item.correctAnswer}"`;
+                    feedbackElement.appendChild(correctAnswerElement);
+
+                    // Append the feedback box to the feedback container
+                    feedbackContainer.appendChild(feedbackElement);
+                });
+            } else {
+                feedbackContainer.innerHTML = "<p>You answered all questions correctly!</p>";
+            }
+        }
+
+        // Restart the test (redirect back to the quiz page)
+        function restartTest() {
+            localStorage.clear();  // Clear the stored results
+            window.location.href = "index.html";  // Redirect to the main test page
+        }
+    </script>
+</body>
+</html>
