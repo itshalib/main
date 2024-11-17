@@ -13,12 +13,12 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #121212;  /* Dark background */
-            color: #fff;  /* Light text */
+            background-color: #121212;
+            color: #fff;
         }
 
         #test-container {
-            background-color: #1e1e1e;  /* Darker container */
+            background-color: #1e1e1e;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -44,7 +44,7 @@
         .progress-bar {
             height: 100%;
             background-color: #4caf50;
-            width: 0%;  /* Default width, will update dynamically */
+            width: 0%;
             border-radius: 4px;
             transition: width 0.3s ease;
         }
@@ -53,51 +53,47 @@
             padding: 10px 15px;
             margin-top: 20px;
             border: none;
-            background-color: #444;  /* Dark button */
-            color: #fff;  /* White text */
+            background-color: #444;
+            color: #fff;
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         button:hover {
-            background-color: #555;  /* Lighter button hover effect */
+            background-color: #555;
         }
 
         #answers-container {
             margin-top: 15px;
         }
 
-        /* Base button style */
         #answers-container button {
             width: 100%;
             padding: 10px;
             margin-bottom: 5px;
-            background-color: #333;  /* Dark button */
-            border: 1px solid #444;  /* Darker border */
-            color: #fff;  /* White text */
+            background-color: #333;
+            border: 1px solid #444;
+            color: #fff;
             cursor: pointer;
         }
 
-        /* Hover effect */
         #answers-container button:hover {
-            background-color: #6a6a6a;  /* Lighter button hover effect */
+            background-color: #6a6a6a;
         }
 
-        /* Active (clicked) state */
         #answers-container button:active {
-            background-color: #fff;  /* White background when clicked */
-            color: #bdbdbd;  /* Slightly lighter text color for contrast */
-            border: 1px solid #333;  /* Dark border */
+            background-color: #fff;
+            color: #bdbdbd;
+            border: 1px solid #333;
         }
 
-        /* Selected state (button clicked and retained) */
         #answers-container button.selected {
-            background-color: #fff;  /* White background when selected */
-            color: #121212;  /* Dark text color for contrast */
-            border: 1px solid #333;  /* Dark border */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+            background-color: #fff;
+            color: #121212;
+            border: 1px solid #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         #result-container {
@@ -113,7 +109,6 @@
 <body>
 
     <div id="test-container">
-        <!-- Header with question progress -->
         <div class="header">
             <span id="question-progress">Question 1 of 3</span>
             <div class="progress-bar-container">
@@ -121,160 +116,143 @@
             </div>
         </div>
 
-        <!-- Question and Answers Container -->
         <div id="question-container">
             <br>
             <h2 id="question-text"></h2>
-            <div id="answers-container">
-                <!-- Dynamic answers will be inserted here -->
-            </div>
+            <div id="answers-container"></div>
         </div>
 
-        <!-- Result Container (hidden initially) -->
         <div id="result-container">
             <h2>Your Results</h2>
             <p id="score"></p>
-            <div id="feedback-container"></div> <!-- Feedback on wrong answers will appear here -->
+            <div id="feedback-container"></div>
             <button onclick="restartTest()">Restart</button>
         </div>
     </div>
 
     <script>
-        // List of questions and answers (with options and correct answers)
         const questions = [
-        {
-        question: "What is the primary purpose of the ARP protocol in networking?",
-        options: ["To resolve domain names to IP addresses", "To map IP addresses to MAC addresses", "To route packets between different subnets", "To establish secure connections between two devices"],
-        correctAnswer: 1 // Option 1 is correct (To map IP addresses to MAC addresses)
-    },
-    {
-        question: "Which of the following is the default administrative distance for OSPF?",
-        options: ["90", "100", "110", "120"],
-        correctAnswer: 2 // Option 2 is correct (110)
-    },
-    {
-        question: "Which layer of the OSI model is responsible for logical addressing and routing?",
-        options: ["Application Layer", "Data Link Layer", "Network Layer", "Transport Layer"],
-        correctAnswer: 2 // Option 2 is correct (Network Layer)
-    },
-    {
-        question: "Which of the following is used to create a VLAN on a Cisco switch?",
-        options: ["ip route", "vlan database", "switchport mode", "interface vlan"],
-        correctAnswer: 1 // Option 1 is correct (vlan database)
-    },
-    {
-        question: "Which type of cable is used to connect two routers directly without a switch in between?",
-        options: ["Straight-through cable", "Crossover cable", "Rollover cable", "Fiber optic cable"],
-        correctAnswer: 1 // Option 1 is correct (Crossover cable)
-    },
-    {
-        question: "What is the purpose of the show ip route command on a Cisco router?",
-        options: ["To display the router’s IP configuration", "To display the routing table of the router", "To display the status of all network interfaces", "To display the ARP table"],
-        correctAnswer: 1 // Option 1 is correct (To display the routing table of the router)
-    },
-    {
-        question: "Which of the following is the function of the Spanning Tree Protocol (STP)?",
-        options: ["Prevents IP address conflicts in a subnet", "Prevents loops in Ethernet networks", "Determines the best route in a routing table", "Encrypts data on the network"],
-        correctAnswer: 1 // Option 1 is correct (Prevents loops in Ethernet networks)
-    },
-    {
-        question: "In IPv6 addressing, which of the following is the correct format for a global unicast address?",
-        options: ["0.0.0.0/8", "2001:0db8::/32", "192.168.1.0/24", "fe80::/10"],
-        correctAnswer: 1 // Option 1 is correct (2001:0db8::/32)
-    },
-    {
-        question: "Which command is used to configure an IP address on a Cisco router’s interface?",
-        options: ["ip config", "interface ip", "ip address", "assign ip"],
-        correctAnswer: 2 // Option 2 is correct (ip address)
-    },
-    {
-        question: "Which of the following protocols operates at the transport layer of the OSI model?",
-        options: ["IP", "TCP", "Ethernet", "ARP"],
-        correctAnswer: 1 // Option 1 is correct (TCP)
-    }
-];
+            {
+                question: "What is the primary purpose of the ARP protocol in networking?",
+                options: ["To resolve domain names to IP addresses", "To map IP addresses to MAC addresses", "To route packets between different subnets", "To establish secure connections between two devices"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which of the following is the default administrative distance for OSPF?",
+                options: ["90", "100", "110", "120"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which layer of the OSI model is responsible for logical addressing and routing?",
+                options: ["Application Layer", "Data Link Layer", "Network Layer", "Transport Layer"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which of the following is used to create a VLAN on a Cisco switch?",
+                options: ["ip route", "vlan database", "switchport mode", "interface vlan"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which type of cable is used to connect two routers directly without a switch in between?",
+                options: ["Straight-through cable", "Crossover cable", "Rollover cable", "Fiber optic cable"],
+                correctAnswer: 1
+            },
+            {
+                question: "What is the purpose of the show ip route command on a Cisco router?",
+                options: ["To display the router’s IP configuration", "To display the routing table of the router", "To display the status of all network interfaces", "To display the ARP table"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which of the following is the function of the Spanning Tree Protocol (STP)?",
+                options: ["Prevents IP address conflicts in a subnet", "Prevents loops in Ethernet networks", "Determines the best route in a routing table", "Encrypts data on the network"],
+                correctAnswer: 1
+            },
+            {
+                question: "In IPv6 addressing, which of the following is the correct format for a global unicast address?",
+                options: ["0.0.0.0/8", "2001:0db8::/32", "192.168.1.0/24", "fe80::/10"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which command is used to configure an IP address on a Cisco router’s interface?",
+                options: ["ip config", "interface ip", "ip address", "assign ip"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which of the following protocols operates at the transport layer of the OSI model?",
+                options: ["IP", "TCP", "Ethernet", "ARP"],
+                correctAnswer: 1
+            }
+        ];
 
         let currentQuestionIndex = 0;
         let score = 0;
-        let userAnswers = [];  // To store user answers
+        let userAnswers = [];
 
-        // Function to shuffle an array (for the questions)
         function shuffleArray(arr) {
             for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
         }
 
-        // Shuffle the questions at the beginning of the test
         shuffleArray(questions);
 
-        // Function to load the current question and its options
         function loadQuestion() {
             const question = questions[currentQuestionIndex];
+            const shuffledOptions = [...question.options];
+            shuffleArray(shuffledOptions);
+            const correctAnswerIndexInShuffled = shuffledOptions.indexOf(question.options[question.correctAnswer]);
+
             document.getElementById("question-text").textContent = question.question;
 
             const answersContainer = document.getElementById("answers-container");
-            answersContainer.innerHTML = ""; // Clear previous answers
+            answersContainer.innerHTML = "";
 
-            // Create buttons for each answer option (order remains the same)
-            question.options.forEach((option, index) => {
+            shuffledOptions.forEach((option, index) => {
                 const button = document.createElement("button");
                 button.textContent = option;
-                button.onclick = () => checkAnswer(button, index, question);
+                button.onclick = () => checkAnswer(button, index, correctAnswerIndexInShuffled);
                 answersContainer.appendChild(button);
             });
 
-            // Update question progress text and progress bar
             const progressText = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
             document.getElementById("question-progress").textContent = progressText;
 
-            // Update the progress bar width
             const progressBar = document.getElementById("progress-bar");
             const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
             progressBar.style.width = `${progress}%`;
         }
 
-        // Function to check the answer and apply visual feedback
-        function checkAnswer(button, selectedIndex, question) {
-            const isCorrect = selectedIndex === question.correctAnswer;
-
-            // Store the user's answer (index of the selected option)
+        function checkAnswer(button, selectedIndex, correctAnswerIndexInShuffled) {
+            const isCorrect = selectedIndex === correctAnswerIndexInShuffled;
             userAnswers[currentQuestionIndex] = { selectedIndex, isCorrect };
 
-            // Apply the "selected" class to highlight the chosen button (color change)
             button.classList.add("selected");
 
-            // If correct, increase the score
             if (isCorrect) {
                 score++;
             }
 
-            // Disable all answer buttons after a short delay to allow for color transition
             setTimeout(() => {
                 const buttons = document.querySelectorAll("#answers-container button");
-                buttons.forEach(btn => btn.disabled = true); // Disable all answer buttons
-            }, 300);  // Delay to allow time for transition
+                buttons.forEach(btn => btn.disabled = true);
+            }, 300);
 
-            // Wait for 1 second before moving to the next question
             setTimeout(() => {
                 currentQuestionIndex++;
 
                 if (currentQuestionIndex < questions.length) {
                     loadQuestion();
                 } else {
-                    showResults();  // Show results when all questions are done
+                    showResults();
                 }
-            }, 350); // 1-second delay before moving to the next question
+            }, 350);
         }
 
-        // Function to show the test results
         function showResults() {
-            // Store the results in localStorage
             localStorage.setItem("score", score);
             localStorage.setItem("totalQuestions", questions.length);
 
-            // Store feedback for incorrect answers
             const feedback = [];
             userAnswers.forEach((answer, index) => {
                 if (!answer.isCorrect) {
@@ -288,17 +266,14 @@
             });
             localStorage.setItem("feedback", JSON.stringify(feedback));
 
-            // Redirect to results page
             window.location.href = "results.html";
         }
 
-        // Function to restart the test
         function restartTest() {
             score = 0;
             currentQuestionIndex = 0;
-            userAnswers = [];  // Reset user answers
+            userAnswers = [];
 
-            // Shuffle the questions again for the next test
             shuffleArray(questions);
 
             document.getElementById("result-container").style.display = "none";
@@ -306,7 +281,6 @@
             loadQuestion();
         }
 
-        // Initialize the test on page load
         loadQuestion();
     </script>
 </body>
