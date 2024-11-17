@@ -75,17 +75,21 @@
     <script>
        
        window.onload = function() {
-            const allowedReferrer = "https://itshalib.com/ccna.html"; // Corrected URL
+    const allowedReferrer = "https://itshalib.com/ccna.html"; // The correct referrer URL
 
-            // Log the referrer for debugging
-            console.log('Referrer:', document.referrer);
+    // Log the referrer for debugging
+    console.log('Full Referrer URL:', document.referrer);
 
-            // Check if the referrer matches
-            if (!document.referrer || !document.referrer.includes(allowedReferrer)) {
-                // Redirect if not coming from the allowed page
-                window.location.href = "https://itshalib.com"; // Redirect to another page
-            }
-        };
+    // Check if the referrer contains the expected string
+    if (!document.referrer || !document.referrer.includes(allowedReferrer)) {
+        console.log("Referrer is incorrect or missing. Redirecting...");
+        window.location.href = "https://itshalib.com"; // Redirect to the main page
+    } else {
+        console.log("Referrer is correct. No redirect.");
+    }
+};
+
+
 
 
         document.getElementById('generateBtn').addEventListener('click', async function() {
