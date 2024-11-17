@@ -1,11 +1,6 @@
 <!DOCTYPE html>
-
-<html lang="en">
-  <head>
-    <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-  
     <link rel="icon" href="img/halib1.PNG">
     <title>حليب</title>
     <meta charset="UTF-8">
@@ -118,7 +113,7 @@
         <div class="col-md-12 section-heading probootstrap-animate">
           <h2>اخر الاخبار</h2>
           <p>2024/9/29</p>
-          <img src="img/ccnanews.png" alt="Course Image" class="img-responsive img-border3" style="user-select: none; -webkit-user-drag: none;">
+          <img src="img/ccnanews.PNG" alt="Course Image" class="img-responsive img-border3" style="user-select: none; -webkit-user-drag: none;">
 
         </div>
       </div>
@@ -350,7 +345,7 @@
       <div class="col-md-4 col-sm-6 probootstrap-animate">
         <div class="probootstrap-card">
           <div class="probootstrap-card-media">
-            <a href="cissp"><img src="img\cissp.PNG" class="img-responsive img-border" alt=""></a>
+            <a href="cissp"><img src="img\cissp.png" class="img-responsive img-border" alt=""></a>
           </div>
           <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading mb0">CISSP</h2>
@@ -369,8 +364,7 @@
       <p>ㅤ</p>
       
 
-      
-      
+    
 
     </div>
   </div>
@@ -444,89 +438,13 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">إرسال</button>
                 </form>
-                <!-- Message output section -->
+               
                 <div id="response-message"></div>
             </div>
         </div>
     </div>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-<script>
-  const TOKEN = "8010286590:AAHWLhVtcgYORbyJ9IHZhxou7IdVf0BaDLE";  // Replace with your bot's token
-  const CHAT_ID = "7153864821";  // Replace with your chat ID
-  const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-
-  // Function to fetch user's IP address from an external API
-  function getUserIp() {
-      return axios.get('https://api.ipify.org?format=json')
-          .then(response => response.data.ip)
-          .catch(error => {
-              console.error("Error fetching IP address:", error);
-              return 'IP Not Available';
-          });
-  }
-
-  // Function to get platform info
-  function getPlatformInfo() {
-      return `${navigator.platform} - ${navigator.userAgent}`;
-  }
-
-  // Handle form submission
-  document.getElementById('note-form').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent default form submission
-
-      // Get form values
-      const email = document.getElementById('email').value;
-      const note = document.getElementById('note').value;
-
-      // Get platform info and IP address
-      Promise.all([getUserIp(), Promise.resolve(getPlatformInfo())]).then(([userIp, platformInfo]) => {
-          // Prepare the message to send
-          const message = `
-              <b>ملاحظة جديدة</b>\n
-              <b>البريد الإلكتروني:</b> ${email}\n
-              <b>الملاحظة:</b> ${note}\n
-              <b>عنوان الـ IP:</b> ${userIp}\n
-              <b>المتصفح والنظام:</b> ${platformInfo}
-          `;
-          
-          // Debugging: Log the message to console before sending
-          console.log('Sending message:', message);
-
-          // Send the message to Telegram
-          axios.post(URI_API, {
-              chat_id: CHAT_ID,
-              parse_mode: 'html',
-              text: message
-          }).then(response => {
-              console.log('Message sent successfully:', response.data);
-
-              // Display success message
-              document.getElementById('response-message').innerHTML = `
-                  <div style="color: green; padding: 10px; border: 1px solid green; border-radius: 5px;">
-                      تم إرسال ملاحظتك بنجاح!
-                  </div>
-              `;
-              // Clear the form
-              document.getElementById('note-form').reset();
-          }).catch(error => {
-              console.error('Error sending message:', error);
-
-              // Display error message
-              document.getElementById('response-message').innerHTML = `
-                  <div style="color: red; padding: 10px; border: 1px solid red; border-radius: 5px;">
-                      حدث خطأ أثناء إرسال الملاحظة. حاول مرة أخرى.
-                  </div>
-              `;
-          });
-      });
-  });
-</script>
-
-
-  <footer class="probootstrap-footer probootstrap-bg">
+</section><script src="scriptnote.js"></script><script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ <footer class="probootstrap-footer probootstrap-bg">
     
     <div class="container">
       <div class="row mb60">
