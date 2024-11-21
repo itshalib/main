@@ -121,6 +121,30 @@ h3, .probootstrap-card .probootstrap-card-text .probootstrap-card-heading, .serv
     user-select: none;
 }
 
+
+.btn-youtube {
+  border: 3px solid #ff0000; /* Red border similar to YouTube */
+  background-color: #222222; /* Dark background matching the theme */
+  color: #ffffff; /* YouTube red color for text */
+  font-family: "Roboto", sans-serif; /* Clean sans-serif font */
+  font-size: 18px; /* Font size */
+  font-weight: 600; /* Slightly bold text */
+  text-transform: uppercase; /* Make the text uppercase */
+  padding: 12px 24px; /* Button padding */
+  border-radius: 7px; /* Rounded corners */
+  text-align: center; /* Center text */
+  cursor: pointer; /* Pointer cursor on hover */
+  width: 100px; /* Allow button to adjust width based on text */
+  height: auto;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+.btn-youtube:hover {
+  background-color: #333333; /* Slightly lighter dark background on hover */
+  border-color: #cc0000; /* Darker red border on hover */
+  color: #cb2626; /* White text on hover */
+}
+
 h4, .probootstrap-panel .panel .panel-title {
   font-size: 1.125em;
   font-family: "Noto Sans Arabic", sans-serif;
