@@ -177,7 +177,7 @@
             }
         ];
 
-        let currentQuestionIndex = 0;
+         let currentQuestionIndex = 0;
         let score = 0;
         let userAnswers = [];
 
@@ -192,16 +192,19 @@
 
         function loadQuestion() {
             const question = questions[currentQuestionIndex];
+            const shuffledOptions = [...question.options];
+            shuffleArray(shuffledOptions);
+            const correctAnswerIndexInShuffled = shuffledOptions.indexOf(question.options[question.correctAnswer]);
+
             document.getElementById("question-text").textContent = question.question;
-            shuffleArray(question.options);
 
             const answersContainer = document.getElementById("answers-container");
             answersContainer.innerHTML = "";
 
-            question.options.forEach((option, index) => {
+            shuffledOptions.forEach((option, index) => {
                 const button = document.createElement("button");
                 button.textContent = option;
-                button.onclick = () => checkAnswer(button, index, question);
+                button.onclick = () => checkAnswer(button, index, correctAnswerIndexInShuffled);
                 answersContainer.appendChild(button);
             });
 
@@ -213,8 +216,8 @@
             progressBar.style.width = `${progress}%`;
         }
 
-        function checkAnswer(button, selectedIndex, question) {
-            const isCorrect = selectedIndex === question.correctAnswer;
+        function checkAnswer(button, selectedIndex, correctAnswerIndexInShuffled) {
+            const isCorrect = selectedIndex === correctAnswerIndexInShuffled;
             userAnswers[currentQuestionIndex] = { selectedIndex, isCorrect };
 
             button.classList.add("selected");
@@ -263,7 +266,9 @@
             score = 0;
             currentQuestionIndex = 0;
             userAnswers = [];
+
             shuffleArray(questions);
+
             document.getElementById("result-container").style.display = "none";
             document.getElementById("test-container").style.display = "block";
             loadQuestion();
