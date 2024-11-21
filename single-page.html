@@ -14,7 +14,33 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@600&display=swap" rel="stylesheet">
 
-    
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("openModalBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementById("closeModalBtn");
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8084214794053139"
      crossorigin="anonymous"></script>
     <!--[if lt IE 9]>
@@ -78,11 +104,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-          <p><img src="img/coursesv5.PNG" alt="" class="img-responsive img-border1"></p>
+          <p><img src="img/coursesv5.PNG" alt="" class="img-responsive img-border1" style="user-select: none; -webkit-user-drag: none;" ></p>
           <h2>الكورسات</h2>
           <p>ستكون هذه الصفحه شامله لكل ما يتم نشره من قبل حليب من كورسات على الانترنت</p>
 
-          <p>بما في ذالك الكورسات التي ستكون عللى جميع المنصات ايضا</p>
+          <p>بما في ذالك الكورسات التي ستكون على جميع المنصات ايضا</p>
 
           <h3>المنصة</h3>
 
@@ -92,7 +118,7 @@
 
           <h3>لرؤية جميع الكورسات على منصة يوتيوب </h3>
           <h3></h3>
-          <p><a href="https://youtube.com/@itshalib1" target="_blank" role="button" class="btn btn-primary2 btn-sm">يوتيوب</a></p>
+          <p><a href="https://youtube.com/@itshalib1" target="_blank" role="button" class="btn btn-youtube btn-sm">يوتيوب</a></p>
 
 
         </div>
@@ -314,6 +340,24 @@
           </div>
         </div>
       </div>
+
+
+
+      <div class="row">
+        <div class="col-md-4 probootstrap-animate">
+          <div class="probootstrap-card">
+            <div class="probootstrap-card-media">
+              <a href="https://www.youtube.com/watch?v=sSrEBkcRsD4"><img src="img\telegramthumbnailv1.png" class="img-responsive img-border" alt=""></a>
+            </div>
+            <div class="probootstrap-card-text">
+              <h2 class="probootstrap-card-heading mb0">Developing Fake Pages</h2>
+              <p class="category">تصميم الصفحات الاكترونية</p>
+              <p>في هذا الكورس ستتعلم صنع الصفحات الاكترونية وربطها في التيليقرام</p>
+              <p><a href="https://youtu.be/Q8N5P0x88PM">شاهد الكورس</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
       
 
 
@@ -325,7 +369,7 @@
   </section>  
   <!-- END section -->
   
-  <!--<section class="probootstrap-section">
+ <!-- <section class="probootstrap-section">
     <div class="container">
       <div class="row">
         <div class="col-md-12 section-heading probootstrap-animate">
@@ -393,26 +437,25 @@
   <!-- END section -->
    
 
-  <section class="probootstrap-section">
+  <section class="probootstrap-section" style="background-color: #000000; color: #ffffff; padding: 40px 0;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="section-heading text-center">
-                    <h2>أرسل ملاحظاتك</h2>
+                <div class="section-heading text-center" style="margin-bottom: 30px;">
+                    <h2 style="color: #06c206;">أرسل ملاحظاتك</h2>
                 </div>
-                <form id="note-form">
+                <form id="note-form" style="background-color: #131313df; padding: 20px; border-radius: 8px;">
                     <div class="form-group">
-                        <label for="email">البريد الإلكتروني</label>
-                        <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required>
+                        <label for="email" style="color: #ffffff;">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required style="background-color: #333333; border: 1px solid #06c206; border-width: 2px; color: #ffffff;">
                     </div>
                     <div class="form-group">
-                        <label for="note">ملاحظتك</label>
-                        <textarea id="note" class="form-control" rows="4" placeholder="اكتب ملاحظتك هنا" required></textarea>
+                        <label for="note" style="color: #ffffff;">ملاحظتك</label>
+                        <textarea id="note" class="form-control" rows="4" placeholder="اكتب ملاحظتك هنا" required style="background-color: #333333; border: 1px solid #06c206; border-width: 2px; color: #ffffff;"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">إرسال</button>
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #06c206; border-color: #06c206; color: #000000; ">إرسال</button>
                 </form>
-                <!-- Message output section -->
-                <div id="response-message"></div>
+                <div id="response-message" style="margin-top: 20px; color: #06c206;"></div>
             </div>
         </div>
     </div>
