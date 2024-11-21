@@ -1,11 +1,4 @@
-/*!==============================
- * Theme Name: Haus
- * Theme URL: https://probootstrap.com/haus-free-real-estate-html5-website-template
- * Version: 1.0
- * Author: ProBootstrap.com
- * Author URL: https://probootstrap.com
- * License: Released for free under the Creative Commons Attribution 3.0 license (probootstrap.com/license)
- */
+
  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @font-face {
   font-family: 'icomoon';
@@ -53,7 +46,7 @@ body {
 }
 
 h1, .page-title h1, h2, .section-heading h2, h3, .probootstrap-card .probootstrap-card-text .probootstrap-card-heading, .service .heading, .service.left-icon h3, h4, .probootstrap-panel .panel .panel-title {
-  margin: 1.414em 0 0.5em;
+  margin: 1px;
   line-height: 1.2;
   font-weight: 300;
   color: #ffffff;
@@ -119,30 +112,6 @@ h3, .probootstrap-card .probootstrap-card-text .probootstrap-card-heading, .serv
     "wdth" 100;
     -ms-user-select: none; 
     user-select: none;
-}
-
-
-.btn-youtube {
-  border: 3px solid #ff0000; /* Red border similar to YouTube */
-  background-color: #222222; /* Dark background matching the theme */
-  color: #ffffff; /* YouTube red color for text */
-  font-family: "Roboto", sans-serif; /* Clean sans-serif font */
-  font-size: 18px; /* Font size */
-  font-weight: 600; /* Slightly bold text */
-  text-transform: uppercase; /* Make the text uppercase */
-  padding: 12px 24px; /* Button padding */
-  border-radius: 7px; /* Rounded corners */
-  text-align: center; /* Center text */
-  cursor: pointer; /* Pointer cursor on hover */
-  width: 100px; /* Allow button to adjust width based on text */
-  height: auto;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Smooth transitions */
-}
-
-.btn-youtube:hover {
-  background-color: #333333; /* Slightly lighter dark background on hover */
-  border-color: #cc0000; /* Darker red border on hover */
-  color: #cb2626; /* White text on hover */
 }
 
 h4, .probootstrap-panel .panel .panel-title {
@@ -717,9 +686,6 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
     user-select: none;
 }
 
-
-
-
 .btn.btn-primary {
   border: 2px solid #ffffff;
   background: #181818;
@@ -743,29 +709,29 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
 
 }
 
-.btn.btn-primary2 {
-  border: 2px solid #ea0000;
-  background: #d31414d4;
-  color: #ffffff;
-  font-family: "Noto Sans Arabic", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;                                           /*border of get started button */
-  font-variation-settings:
-    "wdth" 100;
-    -ms-user-select: none; 
-    user-select: none;
-     font-family: "Noto Sans Arabic", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-    -ms-user-select: none; 
-    user-select: none;
+
+
+
+
+
+#subscriberSection {
+  display: flex;
+  align-items: center; 
+}
+
+
+#subscriberSection h1 {
+  margin-right: 10px;
+  margin-top: 10px; 
+  font-size: 24px; 
 
 }
 
+
+#subscriberCount {
+  font-size: 24px; 
+  font-weight: bold; color: #74c94a;
+}
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
   background: ffffff;
