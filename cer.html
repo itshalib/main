@@ -74,21 +74,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script>
        
-   window.onload = function() {
-    const allowedReferrers = [
-        "https://itshalib.com/CCNA.html", 
-        "https://itshalib.com/CISSP.html"
-    ]; // Array of allowed referrers
+ window.onload = function() {
+    const allowedReferrer = "https://itshalib.com/ccna.html"; // The correct referrer URL
 
     // Log the referrer for debugging
     console.log('Full Referrer URL:', document.referrer);
 
-    // Check if the referrer is one of the allowed URLs
-    if (!document.referrer || !allowedReferrers.some(referrer => document.referrer.includes(referrer))) {
-        console.log("Referrer is incorrect or missing. Redirecting...");
+    // Check if the referrer is correct
+    if (!document.referrer || !document.referrer.includes(allowedReferrer)) {
+        console.log("Referrer is incorrect or missing.");
+        
+        // Redirect the user to https://itshalib.com
         window.location.href = "https://itshalib.com"; // Redirect to the main page
     } else {
-        console.log("Referrer is correct. No redirect.");
+        console.log("Referrer is correct. Access granted.");
     }
 };
 
