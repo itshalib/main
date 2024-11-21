@@ -718,23 +718,7 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
 }
 
 
-#subscriberSection {
-  display: flex;
-  align-items: center; 
-}
 
-
-#subscriberSection h1 {
-  margin-right: 10px;
-  margin-top: 10px; 
-  font-size: 24px; 
-
-}
-
-
-#subscriberCount {
-  font-size: 24px; 
-  font
 
 .btn.btn-primary {
   border: 2px solid #ffffff;
