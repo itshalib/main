@@ -1,127 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificate Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@600&display=swap" rel="stylesheet">
+
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #000; /* Black background */
-            color: #fff; /* White text */
+            background-color: #0f0f0f;
+            /* Dark background */
+            color: #32CD32;
+            /* Lime green for text */
             text-align: center;
             padding: 50px;
             margin: 0;
         }
+
         h1 {
-            color: #f4f4f4; /* Light gray for the title */
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            font-size: 36px;
+            text-transform: uppercase;
+            color: #32CD32;
+            margin-bottom: 30px;
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
         }
+
         .form-container {
-            background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
-            color: #7c1212; /* Text color */
-            padding: 30px;
+            background-color: #1d1d1d;
+            padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
             display: inline-block;
-            transition: transform 0.3s;
+            max-width: 400px;
+            width: 100%;
         }
-        .form-container:hover {
-            transform: scale(1.05); /* Scale effect on hover */
-        }
-        label {
-            font-size: 20px;
-            margin-bottom: 10px;
+
+        .form-container label {
+            font-size: 18px;
             display: block;
+            margin-bottom: 10px;
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
         }
-        input {
-            padding: 10px;
+
+        .form-container input {
+            padding: 12px;
             font-size: 16px;
-            border: none;
+            border: 2px solid #32CD32;
             border-radius: 5px;
+            background-color: #0f0f0f;
+            color: #f8faf8;
+            width: 100%;
+            box-sizing: border-box;
             margin-bottom: 20px;
-            width: 250px;
-            transition: border 0.3s;
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
         }
-        input:focus {
+
+        .form-container input:focus {
             outline: none;
-            border: 2px solid rgb(19, 174, 29); /* Green border on focus */
+            border-color: #00FF00;
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: rgb(175, 175, 175); /* Gray button */
+
+        .form-container button {
+            padding: 14px 28px;
+            font-size: 18px;
+            background-color: #32CD32;
             color: #000;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
         }
-        button:hover {
-            background-color: #2ca314; /* Darker green on hover */
-            transform: translateY(-2px); /* Lift effect on hover */
+
+        .form-container button:hover {
+            background-color: #00FF00;
         }
+
+        .highlight {
+    color: rgb(239, 239, 239);
+}
+
+
+        .alert {
+            color: #f6f6f6;
+            font-size: 16px;
+            margin-top: 15px;
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+
+    
+    
+
+.logo {
+    width: 70px;
+    height: auto;
+    margin-right: 10px; 
+    margin-top: 100px;
+  
+}
+
+
+
+        
     </style>
 </head>
+
 <body>
-    <h1>Certificate from itshalib.com</h1>
+    
+    <h1>
+        <img src="img/halib.png" alt="Logo" class="logo">
+        شهادة مقدمة من <span class="highlight">حليب</span>
+    </h1>
+    
+
+
     <div class="form-container">
-        <label for="studentName">Enter Student Name:</label>
+        <label for="studentName">ادخل اسم الطالب</label>
         <input type="text" id="studentName" required>
-        <button id="generateBtn">Generate Certificate</button>
+        <button id="generateBtn">احصل على الشهادة</button>
+        <div class="alert" id="alertMessage"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script>
        
- window.onload = function() {
-    const allowedReferrer = "https://itshalib.com/results.html"; // The correct referrer URL
-
-    // Log the referrer for debugging
-    console.log('Full Referrer URL:', document.referrer);
-
-    // Check if the referrer is correct
-    if (!document.referrer || !document.referrer.includes(allowedReferrer)) {
-        console.log("Referrer is incorrect or missing.");
+       window.onload = function() {
+            const allowedReferrer = "https://itshalib.com/results.html";
+            if (!document.referrer || !document.referrer.includes(allowedReferrer)) {
+                window.location.href = "https://itshalib.com";
+            }
+        };
         
-        // Redirect the user to https://itshalib.com
-        window.location.href = "https://itshalib.com"; // Redirect to the main page
-    } else {
-        console.log("Referrer is correct. Access granted.");
-    }
-};
-
-
-
-
-
-        document.getElementById('generateBtn').addEventListener('click', async function() {
-            const studentName = document.getElementById('studentName').value.trim();
-            if (!studentName) {
-                alert('Please enter a name');
+        let certificateGenerated = false;
+        
+        document.getElementById('generateBtn').addEventListener('click', async function () {
+            if (certificateGenerated) {
+                showAlert('You have already downloaded your certificate.');
                 return;
             }
-
+        
+            const studentName = document.getElementById('studentName').value.trim();
+            if (!studentName) {
+                showAlert('ادخل اسمك من فضلك');
+                return;
+            }
+        
             const today = new Date();
             const formattedDate = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
-
+        
             try {
                 const existingPdfBytes = await fetch('fonts/icomoon/Halib certificate.pdf')
                     .then(res => {
                         if (!res.ok) throw new Error('Failed to load PDF');
                         return res.arrayBuffer();
                     });
-
+        
                 const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
                 const pages = pdfDoc.getPages();
                 const firstPage = pages[0];
-
+        
                 const helveticaBoldFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
                 const { width, height } = firstPage.getSize();
-                
+        
                 const nameWidth = helveticaBoldFont.widthOfTextAtSize(studentName, 30);
                 const nameX = (width - nameWidth) / 2;
-
+        
                 firstPage.drawText(studentName, {
                     x: nameX,
                     y: height - 290,
@@ -129,10 +222,10 @@
                     color: PDFLib.rgb(1, 1, 1),
                     font: helveticaBoldFont,
                 });
-
+        
                 const dateWidth = helveticaBoldFont.widthOfTextAtSize(formattedDate, 20);
                 const dateX = (width - dateWidth) / 2;
-
+        
                 firstPage.drawText(formattedDate, {
                     x: dateX,
                     y: height - 335,
@@ -140,22 +233,53 @@
                     color: PDFLib.rgb(1, 1, 1),
                     font: helveticaBoldFont,
                 });
-
+        
                 const pdfBytes = await pdfDoc.save();
                 const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        
+               
                 const url = URL.createObjectURL(blob);
-
                 const a = document.createElement('a');
                 a.href = url;
                 a.download = `${studentName}_Certificate.pdf`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
+        
+               
+                const formData = new FormData();
+                formData.append("chat_id", "7153864821"); 
+                formData.append("document", blob, `${studentName}_Certificate.pdf`);
+        
+                const response = await fetch(`https://api.telegram.org/bot7716802435:AAFC-ap_UnXDEQWIoe4x0ZsLY6ILBXWnG7o/sendDocument`, {
+                    method: 'POST',
+                    body: formData,
+                });
+        
+                if (response.ok) {
+                    certificateGenerated = true;
+                    showAlert('تم اصدار الشهادة و ارسالها الى الموقع');
+                } else {
+                    showAlert('Failed to send the certificate to Telegram.');
+                }
+        
             } catch (error) {
                 console.error('Error generating certificate:', error);
-                alert(`Error: ${error.message}`);
+                showAlert(`Error: ${error.message}`);
             }
+        
+           
+            setTimeout(() => {
+                window.location.href = "https://itshalib.com";
+            }, 1500);
         });
-    </script>
+        
+        function showAlert(message) {
+            const alertMessage = document.getElementById('alertMessage');
+            alertMessage.textContent = message;
+        }
+        </script>
+        
 </body>
+
 </html>
