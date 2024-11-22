@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@600&display=swap" rel="stylesheet">
+
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -13,6 +18,7 @@
             color: #fff;
             text-align: center;
         }
+
         .container {
             padding: 20px;
             max-width: 800px;
@@ -21,9 +27,11 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         h1 {
             margin-bottom: 20px;
         }
+
         .email-form {
             background-color: #2c2c2c;
             margin-bottom: 15px;
@@ -31,6 +39,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
+
         .email-form input {
             padding: 10px;
             margin: 10px 0;
@@ -39,6 +48,7 @@
             width: 100%;
             max-width: 300px;
         }
+
         .question-box {
             background-color: #2c2c2c;
             margin-bottom: 15px;
@@ -46,31 +56,38 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
+
         .question-box .question {
             font-size: 18px;
             font-weight: bold;
         }
+
         .question-box .answer {
             font-size: 16px;
             margin-top: 10px;
         }
+
         .question-box .correct-answer {
             font-weight: bold;
             color: #4caf50;
         }
+
         .question-box .selected-answer {
             font-weight: bold;
             color: #f44336;
         }
+
         .feedback {
             text-align: left;
             margin-top: 20px;
         }
+
         #score {
             font-size: 20px;
             margin-bottom: 20px;
             font-weight: bold;
         }
+
         button {
             padding: 10px 15px;
             margin-top: 20px;
@@ -81,44 +98,101 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         button:hover {
             background-color: #555;
         }
+
         .response-message {
             padding: 10px;
             border-radius: 5px;
             margin-top: 20px;
         }
+
         .success-message {
             color: green;
             border: 1px solid green;
         }
+
         .error-message {
             color: red;
             border: 1px solid red;
         }
+
+        h3 {
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        h1 {
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        button{
+            
+            font-family: "Noto Sans Arabic", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+            -ms-user-select: none;
+            user-select: none;
+        
+        }
+
+        input{
+            font-family: "Noto Sans Arabic", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+    -ms-user-select: none; 
+    user-select: none;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>Test Results</h1>
+        <h1>النتيجة</h1>
         <div id="email-form" class="email-form">
-            <h3>Please enter your email to view the results</h3>
+            <h3>الرجاء وضع بريدك الاكتروني</h3>
+
             <form id="note-form">
-                <input type="email" id="email" placeholder="Your email" required />
-                <button type="submit">Submit</button>
+                <input type="email" id="email" placeholder="بريدك الاكتروني" required />
+                <button type="submit">تسليم</button>
             </form>
         </div>
+
         <div id="test-results" style="display: none;">
+            <h3>ملاحظة.. عند حصولك على الدرجة الكاملة تحصل على شهادة</h3>
             <p id="score"></p>
             <div id="feedback" class="feedback"></div>
-            <button onclick="restartTest()">Take Another Test</button>
+            <button onclick="restartTest()">العودة</button>
+            <h4></h4>
             <div id="redirect-button-container"></div> <!-- For redirect button -->
         </div>
         <div id="response-message"></div>
-    </div><script src="score.js"></script><script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </div>
+    <script src="score.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-   
- 
+
+
 </body>
+
 </html>
